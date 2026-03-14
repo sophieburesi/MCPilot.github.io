@@ -223,7 +223,7 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
 .axis-v{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--border);z-index:1;pointer-events:none}
 /* Competitor nodes */
 .cnode{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;z-index:2}
-.cnode-logo{border-radius:7px;background:#fff;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.cnode-logo{border-radius:50%;background:#fff;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .cnode-lbl{font-size:6.5px;color:var(--t2);text-align:center;line-height:1.2;font-weight:500;max-width:56px}
 /* MCPilot hero node */
 .hero-node{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;gap:4px}
@@ -407,6 +407,7 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
   <div class="slide" id="s3">
     <div class="slbl">02 — The Solution</div>
     <div class="stitle">MCPilot — native MCP governance, <span>compliance-first</span></div>
+    <div style="font-size:11px;color:var(--t2);margin-top:-10px;margin-bottom:14px">From pre-production audit <strong style="color:#059669">(Remy)</strong> to real-time production monitoring — one platform, full MCP lifecycle.</div>
     <div class="g2">
       <div style="display:flex;flex-direction:column;gap:10px">
         <div class="pillar"><div class="pnum" style="background:var(--blue)">1</div><div><div style="font-size:13px;font-weight:600;margin-bottom:4px">Real-time cartography</div><div style="font-size:10px;color:var(--t2);line-height:1.55">Visualize every agent, MCP server and connection. Every new agent detected in under 60 seconds — no code changes required.</div></div></div>
@@ -510,9 +511,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     <div class="slbl">05 — Business Model</div>
     <div class="stitle">Per MCP server — <span>predictable, expansive, non-optional</span></div>
     <div class="twrap">
-      <div class="tier s"><div class="tnm">STARTER</div><div class="tpr">Free</div><div class="tnt">forever</div><div class="tu">Up to 3 MCP servers</div><hr class="tline"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Flow cartography</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Real-time dashboard</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Basic alerts</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>EU AI Act compliance</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>Audit reports</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>SSO / Identity</div><div class="tcta" style="background:var(--s2);color:var(--t2);border:1px solid var(--border)">Acquisition · Bottom-up</div></div>
-      <div class="tier p"><div class="tbadge">Core target</div><div class="tnm" style="color:var(--blue)">PRO</div><div class="tpr">€790</div><div class="tnt">/ server / year</div><div class="tu">From 4 MCP servers</div><hr class="tline" style="border-color:var(--blue-bd)"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Everything in Starter</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>AI anomaly detection</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SIEM integrations</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>On-premise deployment</div><div class="tex">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div></div>
-      <div class="tier e"><div class="tnm">ENTERPRISE</div><div class="tpr" style="font-size:22px">Custom</div><div class="tnt">30+ MCP servers</div><div class="tu">Regulated sectors</div><hr class="tline"><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Everything in Pro</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>On-premise deployment</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Dedicated CSM</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>CISO / CTO training</div><div class="tcta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div></div>
+      <div class="tier s"><div class="tnm">STARTER</div><div class="tpr">Free</div><div class="tnt">forever</div><div class="tu">Up to 3 MCP servers</div><hr class="tline"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Flow cartography</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Real-time dashboard</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Basic alerts</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>EU AI Act compliance</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>Audit reports</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>SSO / Identity</div><div class="ft on" style="color:#6B7280;font-size:9px"><div class="fd" style="background:#D1D5DB"></div>🐀 Remy — 3 scans/month</div><div class="tcta" style="background:var(--s2);color:var(--t2);border:1px solid var(--border)">Acquisition · Bottom-up</div></div>
+      <div class="tier p"><div class="tbadge">Core target</div><div class="tnm" style="color:var(--blue)">PRO</div><div class="tpr">€790</div><div class="tnt">/ server / year</div><div class="tu">From 4 MCP servers</div><hr class="tline" style="border-color:var(--blue-bd)"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Everything in Starter</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>AI anomaly detection</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SIEM integrations</div><div class="ft on" style="color:#059669"><div class="fd" style="background:#059669"></div>🐀 Remy — unlimited scans</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>On-premise deployment</div><div class="tex">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div></div>
+      <div class="tier e"><div class="tnm">ENTERPRISE</div><div class="tpr" style="font-size:22px">Custom</div><div class="tnt">30+ MCP servers</div><div class="tu">Regulated sectors</div><hr class="tline"><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Everything in Pro</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>On-premise deployment</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div><div class="ft on" style="color:#6EE7B7"><div class="fd" style="background:#6EE7B7"></div>🐀 Remy — CI/CD + white-label badge</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Dedicated CSM</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>CISO / CTO training</div><div class="tcta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div></div>
     </div>
     <div class="g2">
       <div class="surf"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Unit economics · Year 3</div><table style="width:100%;font-size:10px;border-collapse:collapse"><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Pro clients (avg. 12 servers)</td><td style="text-align:right;font-weight:600">380</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Enterprise clients</td><td style="text-align:right;font-weight:600">15</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Pro</td><td style="text-align:right;font-weight:600">€9,480</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Enterprise</td><td style="text-align:right;font-weight:600">€55,000</td></tr><tr><td style="padding:5px 0;font-weight:600;font-size:12px">ARR Year 3</td><td style="text-align:right;font-weight:700;font-size:13px;color:var(--green)">~€4.4M</td></tr></table></div>
@@ -526,7 +527,7 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     <div class="stitle">EU Retail beachhead — <span>3 phases, Artefact as launch pad</span></div>
     <div class="g3" style="margin-bottom:10px">
       <div class="phase p1"><div class="pnr"><div class="pci" style="background:var(--blue)">1</div><span class="prng" style="color:var(--blue)">M0 → M6</span></div><div class="ptit">Beachhead</div><div class="chip" style="background:var(--blue-bg);color:var(--blue-dk);border:1px solid var(--blue-bd)">Artefact as first channel</div><div class="pli">Convert 2-3 Artefact AI practice leads into internal ambassadors</div><div class="pli">Offer MCPilot as "free MCP audit" to Artefact clients deploying agents</div><div class="pli">Target: 5 signed pilots, 3 documented case studies</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--blue)">5</div><div class="psl">pilot clients</div></div><div class="pstat"><div class="psn" style="color:var(--blue)">~€50k</div><div class="psl">Initial ARR</div></div></div></div>
-      <div class="phase p2"><div class="pnr"><div class="pci" style="background:var(--orange)">2</div><span class="prng" style="color:var(--orange)">M6 → M18</span></div><div class="ptit">Scale</div><div class="chip" style="background:var(--org-bg);color:var(--orange);border:1px solid var(--org-bd)">Certified integrator network</div><div class="pli">Partner program: 5-8 SIs reselling MCPilot (Capgemini, Sopra, Devoteam…)</div><div class="pli">Thought leadership: EU AI Act whitepaper, CISO webinars</div><div class="pli">First commercial hire at M9 — outbound on regulated sectors</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--orange)">50</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--orange)">~€600k</div><div class="psl">ARR Year 1</div></div></div></div>
+      <div class="phase p2"><div class="pnr"><div class="pci" style="background:var(--orange)">2</div><span class="prng" style="color:var(--orange)">M6 → M18</span></div><div class="ptit">Scale</div><div class="chip" style="background:var(--org-bg);color:var(--orange);border:1px solid var(--org-bd)">Certified integrator network</div><div class="pli">Partner program: 5-8 SIs reselling MCPilot (Capgemini, Sopra, Devoteam…)</div><div class="pli">🐀 Remy v0 launch — quality badge on GitHub, viral developer-led growth</div><div class="pli">Thought leadership: EU AI Act whitepaper, CISO webinars</div><div class="pli">First commercial hire at M9 — outbound on regulated sectors</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--orange)">50</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--orange)">~€600k</div><div class="psl">ARR Year 1</div></div></div></div>
       <div class="phase p3"><div class="pnr"><div class="pci" style="background:var(--green)">3</div><span class="prng" style="color:var(--green)">M18 → M36</span></div><div class="ptit">EU Domination</div><div class="chip" style="background:var(--grn-bg);color:var(--green);border:1px solid var(--grn-bd)">Inbound + account expansion</div><div class="pli">MCPilot becomes the EU AI Act compliance reference for MCP</div><div class="pli">Sector expansion: finance, healthcare, industry — dedicated case studies</div><div class="pli">NRR &gt;120% driven by natural MCP server growth per account</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--green)">400</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--green)">~€4.4M</div><div class="psl">ARR Year 3</div></div></div></div>
     </div>
     <div class="astrip"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Why Artefact is a launch pad, not just a network</div><div class="g3" style="gap:10px"><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Direct access to decision-makers</div><div style="font-size:10px;color:var(--t2)">Artefact consultants are already inside the COMEXs deploying AI agents</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Zero-cost evangelization</div><div style="font-size:10px;color:var(--t2)">A consultant recommending MCPilot = instant credibility, zero acquisition cost</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Reseller model possible</div><div style="font-size:10px;color:var(--t2)">Artefact bundles MCPilot into AI deployment offers — commission on each contract</div></div></div></div>
@@ -548,23 +549,17 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
               <div class="q-label global">GLOBAL</div>
               <!-- Datadog -->
               <div class="cnode" style="left:10px;top:28px">
-                <div class="cnode-logo" style="width:40px;height:40px">
-                  <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#774AA4"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">DD</text></svg>
-                </div>
+                <div class="cnode-logo" style="width:40px;height:40px;background:#774AA4;border-color:#774AA4;color:#fff;font-size:11px;font-weight:700;font-family:sans-serif">DD</div>
                 <div class="cnode-lbl">Datadog<br>Observability</div>
               </div>
               <!-- Kong -->
               <div class="cnode" style="right:28px;top:34px">
-                <div class="cnode-logo" style="width:30px;height:30px">
-                  <svg width="22" height="22" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#003459"/><text x="20" y="26" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif" font-weight="bold">K</text></svg>
-                </div>
+                <div class="cnode-logo" style="width:30px;height:30px;background:#003459;border-color:#003459;color:#fff;font-size:13px;font-weight:700;font-family:sans-serif">K</div>
                 <div class="cnode-lbl">Kong</div>
               </div>
               <!-- Cloudflare -->
               <div class="cnode" style="left:14px;bottom:20px">
-                <div class="cnode-logo" style="width:30px;height:30px">
-                  <svg width="22" height="22" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#F6821F"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">CF</text></svg>
-                </div>
+                <div class="cnode-logo" style="width:30px;height:30px;background:#F6821F;border-color:#F6821F;color:#fff;font-size:11px;font-weight:700;font-family:sans-serif">CF</div>
                 <div class="cnode-lbl">Cloudflare</div>
               </div>
             </div>
@@ -572,16 +567,12 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
             <div class="q q-tr">
               <!-- Runlayer -->
               <div class="cnode" style="left:14px;top:26px">
-                <div class="cnode-logo" style="width:38px;height:38px;background:var(--blue-bg);border-color:var(--blue-bd)">
-                  <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#2563EB"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">RL</text></svg>
-                </div>
+                <div class="cnode-logo" style="width:38px;height:38px;background:#2563EB;border-color:#1E40AF;color:#fff;font-size:11px;font-weight:700;font-family:sans-serif">RL</div>
                 <div class="cnode-lbl" style="color:var(--blue-dk)">Runlayer<br>$11M · US</div>
               </div>
               <!-- MintMCP -->
               <div class="cnode" style="right:16px;bottom:24px">
-                <div class="cnode-logo" style="width:28px;height:28px">
-                  <svg width="20" height="20" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#10B981"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">M</text></svg>
-                </div>
+                <div class="cnode-logo" style="width:28px;height:28px;background:#10B981;border-color:#059669;color:#fff;font-size:11px;font-weight:700;font-family:sans-serif">M</div>
                 <div class="cnode-lbl">MintMCP</div>
               </div>
             </div>
@@ -592,13 +583,10 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
             <!-- BR: Europe + MCP Specialist = MCPilot -->
             <div class="q q-br">
               <div class="hero-node" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
-                <div class="hero-ring" style="width:80px;height:80px">
-                  <svg width="36" height="36" viewBox="0 0 24 28" fill="none">
-                    <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" stroke="#2563EB" stroke-width="1.5" fill="none"/>
-                    <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <div class="hero-ring" style="width:80px;height:80px;display:flex;align-items:center;justify-content:center">
+                  <span style="font-size:13px;font-weight:700;color:#2563EB;letter-spacing:-0.5px">MCPilot</span>
                 </div>
-                <div class="hero-lbl">MCPilot<br>EU · MCP native</div>
+                <div class="hero-lbl">EU · MCP native</div>
               </div>
             </div>
           </div>
@@ -646,8 +634,8 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     <div class="stitle">Founder — and the <span>CTO seat to fill</span></div>
     <div class="team-grid">
 
-      <!-- Sophie — white card, blue accent -->
-      <div class="person-card sc-sophie">
+      <!-- Sophie — white card, blue accent, same layout as CTO -->
+      <div class="person-card" style="border:1px solid var(--border);border-left:4px solid var(--blue);">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <div class="person-avatar" style="background:var(--blue-bg);border:2px solid var(--blue-bd);color:var(--blue)">S</div>
           <div>
@@ -662,7 +650,7 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
       </div>
 
       <!-- CTO — white card, dashed border -->
-      <div class="person-card sc-cto">
+      <div class="person-card" style="border:1.5px dashed var(--border2);">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <div class="person-avatar" style="background:var(--s2);border:1.5px dashed var(--border2);color:var(--border2);font-size:22px">?</div>
           <div>

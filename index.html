@@ -1,904 +1,802 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCPilot — Seed Pitch Deck 2025</title>
-
-<!-- Open Graph -->
+<title>MCPilot — The control tower for AI agents</title>
 <meta property="og:title" content="MCPilot — The control tower for AI agents">
-<meta property="og:description" content="MCP governance & observability platform natively built for Europe. Seed round €1M — 2025.">
+<meta property="og:description" content="MCP governance & observability platform natively built for Europe. Seed 2025.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sophieburesi.github.io/MCPilot.github.io/">
-<meta property="og:image" content="https://sophieburesi.github.io/MCPilot.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MCPilot — The control tower for AI agents">
-<meta name="twitter:description" content="MCP governance & observability for European enterprises. Seed 2025.">
-
-<!-- Analytics: Plausible (GDPR-compliant, no cookies) -->
 <script defer data-domain="sophieburesi.github.io" src="https://plausible.io/js/script.js"></script>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F8F7F2;--surface:#FFFFFF;--surface2:#F2F0EA;
+  --bg:#F8F7F2;--surface:#FFFFFF;--s2:#F2F0EA;
   --border:#E8E4DC;--border2:#D4CFC4;
-  --text:#1A1612;--text2:#5A5248;--text3:#8C857A;
-  --blue:#2563EB;--blue-bg:#EEF2FF;--blue-border:#C7D2FE;--blue-dark:#1E40AF;
-  --amber:#D97706;--amber-bg:#FFFBEB;--amber-border:#FDE68A;
-  --green:#059669;--green-bg:#ECFDF5;--green-border:#A7F3D0;
-  --red:#DC2626;--red-bg:#FEF2F2;--red-border:#FECACA;
-  --orange:#EA580C;--orange-bg:#FFF7ED;--orange-border:#FDBA74;
-  --purple:#7C3AED;--purple-bg:#F5F3FF;--purple-border:#DDD6FE;
+  --text:#1A1612;--t2:#5A5248;--t3:#8C857A;
+  --blue:#2563EB;--blue-bg:#EEF2FF;--blue-bd:#C7D2FE;--blue-dk:#1E40AF;
+  --amber:#D97706;--amb-bg:#FFFBEB;--amb-bd:#FDE68A;
+  --green:#059669;--grn-bg:#ECFDF5;--grn-bd:#A7F3D0;
+  --red:#DC2626;--red-bg:#FEF2F2;--red-bd:#FECACA;
+  --orange:#EA580C;--org-bg:#FFF7ED;--org-bd:#FDBA74;
+  --purple:#7C3AED;
 }
-html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
 
-/* ── PASSWORD SCREEN ── */
-#lockscreen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column;gap:20px}
-.lock-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px 40px;width:340px;text-align:center}
-.lock-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px}
-.lock-logo svg{width:28px;height:28px;color:var(--blue)}
-.lock-logo span{font-size:22px;font-weight:700}
-.lock-subtitle{font-size:13px;color:var(--text3);margin-bottom:24px}
-.lock-input{width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;outline:none;transition:.15s;text-align:center;letter-spacing:3px}
-.lock-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-bg)}
-.lock-btn{width:100%;padding:10px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;transition:.15s}
-.lock-btn:hover{background:var(--blue-dark)}
-.lock-error{font-size:12px;color:var(--red);height:16px;margin-top:8px}
-.lock-hint{font-size:11px;color:var(--text3);margin-top:16px}
+/* ── LOCK ── */
+#lock{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999}
+.lcard{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px 40px;width:340px;text-align:center}
+.llogo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px}
+.llogo span{font-size:22px;font-weight:700}
+.lsub{font-size:13px;color:var(--t3);margin-bottom:22px}
+.linput{width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;outline:none;text-align:center;letter-spacing:3px;transition:.15s}
+.linput:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-bg)}
+.lbtn{width:100%;padding:10px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:10px}
+.lbtn:hover{background:var(--blue-dk)}
+.lerr{font-size:12px;color:var(--red);height:16px;margin-top:6px}
+.lhint{font-size:11px;color:var(--t3);margin-top:14px}
 
 /* ── DECK ── */
 .deck{height:100vh;display:flex;flex-direction:column;overflow:hidden}
 
 /* ── TOPBAR ── */
-.topbar{background:#fff;border-bottom:1px solid var(--border);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10}
-.topbar-brand{display:flex;align-items:center;gap:8px}
-.shield{width:22px;height:22px;color:var(--blue);flex-shrink:0}
-.brand-name{font-size:15px;font-weight:700;color:var(--text)}
-.brand-tag{font-size:11px;color:var(--text3);margin-left:2px;display:none}
-@media(min-width:600px){.brand-tag{display:inline}}
-.topbar-nav{display:flex;align-items:center;gap:6px}
-.btn{padding:5px 12px;border-radius:6px;border:1px solid var(--border2);background:#fff;color:var(--text2);font-size:12px;cursor:pointer;transition:.15s;white-space:nowrap}
-.btn:hover{background:var(--surface2)}
-.btn.icon-btn{padding:5px 8px;font-size:14px}
-.slide-count{font-size:12px;color:var(--text3);padding:0 4px;min-width:40px;text-align:center}
-.progress{height:3px;background:var(--border);flex-shrink:0}
-.progress-fill{height:100%;background:var(--blue);transition:width .3s ease}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:7px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.tbrand{display:flex;align-items:center;gap:8px}
+.tbrand svg{width:20px;height:20px;color:var(--blue);flex-shrink:0}
+.tbrand-name{font-size:15px;font-weight:700}
+.tbrand-tag{font-size:11px;color:var(--t3);margin-left:2px}
+.tnav{display:flex;align-items:center;gap:6px}
+.btn{padding:5px 12px;border-radius:6px;border:1px solid var(--border2);background:#fff;color:var(--t2);font-size:12px;cursor:pointer;transition:.15s;white-space:nowrap;user-select:none}
+.btn:hover{background:var(--s2)}
+.btn.ib{padding:5px 9px;font-size:13px}
+.scount{font-size:12px;color:var(--t3);min-width:40px;text-align:center}
+.pbar{height:3px;background:var(--border);flex-shrink:0}
+.pfill{height:100%;background:var(--blue);transition:width .3s}
 
 /* ── SLIDES ── */
-.slides-wrap{flex:1;overflow:hidden;position:relative}
-.slide{position:absolute;inset:0;overflow-y:auto;padding:24px 28px 20px;display:none}
-.slide.active{display:block;animation:slideIn .25s ease}
-.slide.slide-out{animation:slideOut .25s ease forwards}
-@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
-@keyframes slideOut{to{opacity:0;transform:translateX(-20px)}}
-@media(min-width:768px){.slide{padding:28px 40px 24px}}
-
-/* ── DOTS ── */
-.dots{display:flex;gap:5px;justify-content:center;padding:8px 10px;background:#fff;border-top:1px solid var(--border);flex-shrink:0;flex-wrap:wrap}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--border2);border:none;cursor:pointer;transition:.2s;padding:0;flex-shrink:0}
-.dot.active{background:var(--blue);width:18px;border-radius:3px}
-
-/* ── TYPOGRAPHY ── */
-.sec-label{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.sec-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:18px;line-height:1.2}
-@media(min-width:768px){.sec-title{font-size:24px}}
-.sec-title span{color:var(--blue)}
-
-/* ── CARDS ── */
-.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px}
-.surface{background:var(--surface2);border-radius:10px;padding:14px}
-.dark-card{background:#1A1612;border-radius:12px;padding:18px}
-
-/* ── GRIDS ── */
-.g2{display:grid;grid-template-columns:1fr;gap:12px}
-.g3{display:grid;grid-template-columns:1fr;gap:12px}
-.g4{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-@media(min-width:640px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
-
-/* ── BADGES ── */
-.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:10px;font-weight:600}
-.badge.blue{background:var(--blue-bg);color:var(--blue-dark);border:1px solid var(--blue-border)}
-.badge.amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-.badge.green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.badge.red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
-.badge.gray{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
-.tag{display:inline-block;padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;font-size:10px;color:var(--text2)}
-
-/* ── SCROLLBAR ── */
+.swrap{flex:1;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:22px 32px 20px;display:none}
+.slide.active{display:block;animation:sIn .22s ease}
+@keyframes sIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+@media(min-width:768px){.slide{padding:26px 40px 20px}}
 .slide::-webkit-scrollbar{width:4px}
 .slide::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 
+/* ── DOTS ── */
+.dots{display:flex;gap:5px;justify-content:center;padding:7px;background:#fff;border-top:1px solid var(--border);flex-shrink:0;flex-wrap:wrap}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border2);border:none;cursor:pointer;transition:.2s;padding:0}
+.dot.active{background:var(--blue);width:18px;border-radius:3px}
+
+/* ── TYPE ── */
+.slbl{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+.stitle{font-size:20px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.2}
+@media(min-width:768px){.stitle{font-size:24px}}
+.stitle span{color:var(--blue)}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:580px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px}
+.surf{background:var(--s2);border-radius:10px;padding:14px}
+.dcard{background:#1A1612;border-radius:12px;padding:18px}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:10px;font-weight:600}
+.badge.blue{background:var(--blue-bg);color:var(--blue-dk);border:1px solid var(--blue-bd)}
+.badge.red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.badge.amber{background:var(--amb-bg);color:var(--amber);border:1px solid var(--amb-bd)}
+.badge.gray{background:var(--s2);color:var(--t2);border:1px solid var(--border)}
+.tag{display:inline-block;padding:2px 8px;background:var(--s2);border:1px solid var(--border);border-radius:5px;font-size:10px;color:var(--t2)}
+
 /* ─── COVER ─── */
-.cover-grid{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:640px){.cover-grid{grid-template-columns:1fr 1fr;min-height:calc(100vh - 120px)}}
-.cover-left{display:flex;flex-direction:column;padding-right:0}
-@media(min-width:640px){.cover-left{padding-right:28px;border-right:1px solid var(--border)}}
-.cover-right{display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:0}
-@media(min-width:640px){.cover-right{padding-left:28px}}
-.cover-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.cover-logo span{font-size:28px;font-weight:700}
-@media(min-width:768px){.cover-logo span{font-size:32px}}
-.cover-tagline{font-size:14px;color:var(--blue);font-style:italic;margin-bottom:12px}
-.cover-desc{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:20px}
-.cover-divider{border:none;border-top:1px solid var(--border);margin:14px 0}
-.cover-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
-.cover-right-inner{text-align:center;margin-bottom:20px}
-.cover-round-label{font-size:10px;color:var(--text3);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
-.cover-amount{font-size:36px;font-weight:700;color:var(--text);margin-bottom:4px}
-@media(min-width:768px){.cover-amount{font-size:44px}}
-.cover-year{font-size:13px;color:var(--text3);font-style:italic}
-.geo-block{border-radius:8px;padding:9px 14px;text-align:center;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.cover-center{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 120px);text-align:center;gap:0}
+.cover-logo{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px}
+.cover-logo span{font-size:42px;font-weight:700;color:var(--text);letter-spacing:-1px}
+.cover-shield{width:46px;height:52px}
+.cover-tagline{font-size:18px;color:var(--blue);font-style:italic;margin-bottom:16px;font-weight:400}
+.cover-desc{font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:32px}
+.cover-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.cover-visual{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:480px;margin:0 auto}
+.cover-pill{border-radius:8px;padding:10px 16px;text-align:center;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 
 /* ─── PROBLEM ─── */
-.prob-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden}
-.prob-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
-.prob-card.gold::before{background:var(--amber)}
-.prob-card.copper::before{background:var(--orange)}
-.prob-card.dark::before{background:var(--text2)}
-.prob-icon{font-size:18px;margin-bottom:8px}
-.prob-title{font-size:13px;font-weight:600;margin-bottom:6px}
-.prob-body{font-size:11px;color:var(--text2);line-height:1.6}
+.pcards{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:580px){.pcards{grid-template-columns:repeat(3,1fr)}}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.pcard.gold::before{background:var(--amber)}
+.pcard.copper::before{background:var(--orange)}
+.pcard.dark::before{background:var(--t2)}
+.picon{font-size:18px;margin-bottom:8px}
+.ptitle{font-size:13px;font-weight:600;margin-bottom:6px}
+.pbody{font-size:11px;color:var(--t2);line-height:1.6}
 
 /* ─── SOLUTION ─── */
-.pillar{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:12px}
-.pillar-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
-.pillar-title{font-size:13px;font-weight:600;margin-bottom:4px}
-.pillar-body{font-size:10px;color:var(--text2);line-height:1.55}
+.pillar{background:#fff;border:1px solid var(--border);border-radius:10px;padding:13px;display:flex;gap:10px}
+.pnum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
 
 /* ─── MARKET ─── */
-.market-card{border-radius:12px;padding:18px;color:#fff}
-.market-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;opacity:.7}
-.market-value{font-size:32px;font-weight:700;margin-bottom:4px}
-.market-sub{font-size:11px;opacity:.8;margin-bottom:6px;line-height:1.4}
-.market-note{font-size:10px;opacity:.6}
-.driver-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border)}
-.driver-row:last-child{border-bottom:none}
-.driver-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
-.driver-text{font-size:11px;color:var(--text2)}
+.mcard{border-radius:12px;padding:18px;color:#fff}
+.mlbl{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;opacity:.7}
+.mval{font-size:32px;font-weight:700;margin-bottom:4px}
 
 /* ─── DASHBOARD ─── */
-.dash-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.dash-topbar{background:var(--surface2);border-bottom:1px solid var(--border);padding:7px 12px;display:flex;align-items:center;justify-content:space-between}
-.dash-tb-left{font-size:9px;color:var(--text2)}
-.dash-tb-right{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:600;color:var(--green)}
-.dash-layout{display:flex}
-.dash-sidebar{width:100px;background:var(--surface2);border-right:1px solid var(--border);padding:5px 0;flex-shrink:0}
-@media(max-width:640px){.dash-sidebar{display:none}}
-.dash-nav{padding:5px 10px;font-size:9px;color:var(--text2)}
-.dash-nav.active{background:#fff;font-weight:600;color:var(--blue);border-right:2px solid var(--blue)}
-.dash-nav.alert-item{color:var(--red)}
-.dash-main{flex:1;padding:10px;min-width:0}
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:10px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.dwrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.dtop{background:var(--s2);border-bottom:1px solid var(--border);padding:7px 12px;display:flex;align-items:center;justify-content:space-between;font-size:9px}
+.dlayout{display:flex}
+.dsidebar{width:100px;background:var(--s2);border-right:1px solid var(--border);flex-shrink:0}
+@media(max-width:580px){.dsidebar{display:none}}
+.dnav{padding:5px 10px;font-size:9px;color:var(--t2)}
+.dnav.active{background:#fff;font-weight:600;color:var(--blue);border-right:2px solid var(--blue)}
+.dnav.al{color:var(--red)}
+.dmain{flex:1;padding:10px;min-width:0}
+.krow{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:10px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .kpi{padding:8px 10px;border-right:1px solid var(--border)}
 .kpi:last-child{border-right:none}
-.kpi-label{font-size:8px;color:var(--text3);margin-bottom:2px}
-.kpi-val{font-size:18px;font-weight:700;line-height:1}
-.kpi-val.green{color:var(--green)}
-.kpi-val.red{color:var(--red)}
-.kpi-note{font-size:7px;color:var(--text3);margin-top:1px}
-.dash-panels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.panel{background:var(--surface2);border-radius:7px;padding:9px}
-.panel-title{font-size:8px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.anomaly-pill{background:var(--orange-bg);border:1px solid var(--orange-border);color:var(--orange);padding:1px 6px;border-radius:3px;font-size:7px;font-weight:600}
-.score-num{font-size:30px;font-weight:700;color:var(--green);text-align:center;line-height:1}
-.score-sub{font-size:8px;color:var(--text3);text-align:center;margin-top:2px}
-.act-table{width:100%;font-size:8px;border-collapse:collapse}
-.act-table td{padding:3px 0;border-bottom:1px solid var(--border)}
-.act-table tr:last-child td{border-bottom:none}
-.act-time{color:var(--text3);width:40px}
-.act-tag-ok{background:var(--green-bg);color:var(--green);padding:1px 6px;border-radius:2px;font-weight:600;font-size:7px}
-.act-tag-anom{background:var(--orange-bg);color:var(--orange);padding:1px 6px;border-radius:2px;font-weight:600;font-size:7px}
-code{background:var(--surface2);padding:0 3px;border-radius:2px;font-size:8px;font-family:monospace}
-.bullet-row{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);align-items:flex-start}
-.bullet-row:last-child{border-bottom:none}
-.bullet-bar{width:3px;border-radius:2px;flex-shrink:0;min-height:34px}
-.bullet-text{font-size:11px;color:var(--text2);line-height:1.5}
-.bullet-text strong{color:var(--text);display:block;font-size:12px;margin-bottom:1px}
+.kl{font-size:8px;color:var(--t3);margin-bottom:2px}
+.kv{font-size:18px;font-weight:700;line-height:1}
+.kv.g{color:var(--green)}.kv.r{color:var(--red)}
+.kn{font-size:7px;color:var(--t3);margin-top:1px}
+.dpanels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.panel{background:var(--s2);border-radius:7px;padding:9px}
+.ptl{font-size:8px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.apill{background:var(--org-bg);border:1px solid var(--org-bd);color:var(--orange);padding:1px 6px;border-radius:3px;font-size:7px;font-weight:600}
+.snum{font-size:30px;font-weight:700;color:var(--green);text-align:center;line-height:1}
+.ssub{font-size:8px;color:var(--t3);text-align:center;margin-top:2px}
+.atable{width:100%;font-size:8px;border-collapse:collapse}
+.atable td{padding:3px 0;border-bottom:1px solid var(--border)}
+.atable tr:last-child td{border-bottom:none}
+.at{color:var(--t3);width:40px}
+.tok{background:var(--grn-bg);color:var(--green);padding:1px 6px;border-radius:2px;font-weight:600;font-size:7px}
+.tanom{background:var(--org-bg);color:var(--orange);padding:1px 6px;border-radius:2px;font-weight:600;font-size:7px}
+code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-family:monospace}
+.brow{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.brow:last-child{border-bottom:none}
+.bbar{width:3px;border-radius:2px;flex-shrink:0;min-height:32px}
+.btxt{font-size:11px;color:var(--t2);line-height:1.5}
+.btxt strong{color:var(--text);display:block;font-size:12px;margin-bottom:1px}
 
 /* ─── PRICING ─── */
-.tier-wrap{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
-@media(min-width:640px){.tier-wrap{grid-template-columns:repeat(3,1fr)}}
+.twrap{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+@media(min-width:580px){.twrap{grid-template-columns:repeat(3,1fr)}}
 .tier{border-radius:12px;padding:16px;position:relative}
-.tier.starter{background:#fff;border:1px solid var(--border)}
-.tier.pro{background:#fff;border:2px solid var(--blue)}
-.tier.enterprise{background:#1A1612;border:1px solid #2A2520}
-.tier-badge-wrap{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap}
-.tier-badge-pill{background:var(--blue-bg);border:1px solid var(--blue-border);color:var(--blue-dark);padding:2px 12px;border-radius:99px;font-size:9px;font-weight:600}
-.tier-name{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--text2);margin-bottom:4px}
-.tier.enterprise .tier-name{color:#6B6560}
-.tier-price{font-size:26px;font-weight:700;color:var(--text);margin-bottom:2px}
-.tier.enterprise .tier-price{color:#F5F0EA}
-.tier-note{font-size:9px;color:var(--text2)}
-.tier.enterprise .tier-note{color:#6B6560}
-.tier-unit{font-size:9px;color:var(--text3);font-style:italic;margin-bottom:8px}
-.tier.enterprise .tier-unit{color:#4A4540}
-.tier-line{border:none;border-top:1px solid var(--border);margin:7px 0}
-.tier.enterprise .tier-line{border-color:#2A2520}
-.feat{display:flex;align-items:flex-start;gap:5px;font-size:10px;padding:3px 0}
-.feat.on{color:var(--text2)}
-.feat.off{color:var(--border2)}
-.tier.enterprise .feat.on{color:#C4BFB5}
-.tier.enterprise .feat.off{color:#2A2520}
-.feat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:3px}
-.tier-cta{margin-top:8px;padding:5px;text-align:center;font-size:9px;border-radius:6px}
-.tier-example{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:6px;padding:6px;text-align:center;font-size:9px;color:var(--blue-dark);margin-top:7px}
+.tier.s{background:#fff;border:1px solid var(--border)}
+.tier.p{background:#fff;border:2px solid var(--blue)}
+.tier.e{background:#1A1612;border:1px solid #2A2520}
+.tbadge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--blue-bg);border:1px solid var(--blue-bd);color:var(--blue-dk);padding:2px 12px;border-radius:99px;font-size:9px;font-weight:600}
+.tnm{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--t2);margin-bottom:3px}
+.tier.e .tnm{color:#6B6560}
+.tpr{font-size:26px;font-weight:700;color:var(--text);margin-bottom:1px}
+.tier.e .tpr{color:#F5F0EA}
+.tnt{font-size:9px;color:var(--t2)}
+.tier.e .tnt{color:#6B6560}
+.tu{font-size:9px;color:var(--t3);font-style:italic;margin-bottom:8px}
+.tier.e .tu{color:#4A4540}
+.tline{border:none;border-top:1px solid var(--border);margin:7px 0}
+.tier.e .tline{border-color:#2A2520}
+.ft{display:flex;align-items:flex-start;gap:5px;font-size:10px;padding:2px 0}
+.ft.on{color:var(--t2)}.ft.off{color:var(--border2)}
+.tier.e .ft.on{color:#C4BFB5}.tier.e .ft.off{color:#2A2520}
+.fd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.tcta{margin-top:8px;padding:5px;text-align:center;font-size:9px;border-radius:6px}
+.tex{background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:6px;padding:6px;text-align:center;font-size:9px;color:var(--blue-dk);margin-top:7px}
 
 /* ─── GTM ─── */
 .phase{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;position:relative;overflow:hidden}
 .phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.phase.p1::before{background:var(--blue)}
-.phase.p2::before{background:var(--orange)}
-.phase.p3::before{background:var(--green)}
-.phase-num-row{display:flex;align-items:center;gap:8px;margin-top:6px;margin-bottom:6px}
-.phase-circle{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.phase-range{font-size:9px;font-weight:600;letter-spacing:1px}
-.phase-title2{font-size:15px;font-weight:600;margin-bottom:5px}
-.channel-chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:600;margin-bottom:6px}
-.phase-li{font-size:10px;color:var(--text2);line-height:1.6;padding-left:12px;position:relative;margin:2px 0}
-.phase-li::before{content:'';position:absolute;left:2px;top:6px;width:5px;height:5px;border-radius:50%}
-.phase.p1 .phase-li::before{background:var(--blue)}
-.phase.p2 .phase-li::before{background:var(--orange)}
-.phase.p3 .phase-li::before{background:var(--green)}
-.phase-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px}
-.phase-stat{background:var(--surface2);border-radius:6px;padding:6px;text-align:center}
-.phase-stat-num{font-size:16px;font-weight:700}
-.phase-stat-lbl{font-size:8px;color:var(--text3)}
-.artefact-strip{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:10px}
+.p1::before{background:var(--blue)}.p2::before{background:var(--orange)}.p3::before{background:var(--green)}
+.pnr{display:flex;align-items:center;gap:8px;margin-top:6px;margin-bottom:6px}
+.pci{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.prng{font-size:9px;font-weight:600;letter-spacing:1px}
+.ptit{font-size:15px;font-weight:600;margin-bottom:5px}
+.chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:600;margin-bottom:6px}
+.pli{font-size:10px;color:var(--t2);line-height:1.6;padding-left:12px;position:relative;margin:2px 0}
+.pli::before{content:'';position:absolute;left:2px;top:6px;width:5px;height:5px;border-radius:50%}
+.p1 .pli::before{background:var(--blue)}.p2 .pli::before{background:var(--orange)}.p3 .pli::before{background:var(--green)}
+.pstats{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px}
+.pstat{background:var(--s2);border-radius:6px;padding:6px;text-align:center}
+.psn{font-size:16px;font-weight:700}.psl{font-size:8px;color:var(--t3)}
+.astrip{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:10px}
 
 /* ─── COMPETITION ─── */
-.axis-x-row{display:flex;justify-content:space-between;padding:5px 8px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);color:var(--text3)}
-.axis-x-row .right{color:var(--blue)}
-.matrix-outer{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.matrix-body{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:200px;position:relative}
-.quad{border:0.5px solid var(--border);position:relative;padding:7px}
-.quad.hero{background:var(--blue-bg);border:1.5px solid var(--blue-border)}
-.quad-axis-label{position:absolute;left:5px;top:5px;font-size:7px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3)}
-.quad.hero .quad-axis-label{color:var(--blue)}
-.comp-node{position:absolute;text-align:center}
-.comp-circle{margin:0 auto 2px;border-radius:50%;background:#fff;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center}
-.comp-lbl{font-size:6px;color:var(--text2);line-height:1.2}
-.hero-oval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.hero-oval-inner{width:82px;height:58px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center}
-.hero-oval-text{font-size:7.5px;font-weight:700;color:var(--blue);text-align:center;line-height:1.3}
-.insight-blue{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:8px;padding:10px;margin-bottom:10px}
-.insight-blue-label{font-size:9px;font-weight:700;color:var(--blue-dark);margin-bottom:4px}
-.insight-blue-text{font-size:11px;color:var(--blue-dark);line-height:1.5}
-.comp-analysis{display:flex;flex-direction:column;gap:8px}
-.comp-row{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px;position:relative;overflow:hidden}
-.comp-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
-.comp-row.direct::before{background:var(--red)}
-.comp-row.adjacent::before{background:var(--amber)}
-.comp-row.future::before{background:var(--text3)}
-.comp-row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:8px;flex-wrap:wrap}
-.comp-row-name{font-size:12px;font-weight:600}
-.comp-row-body{font-size:10px;color:var(--text2);line-height:1.5}
+.comp-layout{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:580px){.comp-layout{grid-template-columns:1fr 1fr}}
+
+/* Matrix */
+.matrix-wrap{display:flex;flex-direction:column}
+.axis-labels{display:flex;justify-content:space-between;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);padding:0 2px;margin-bottom:4px}
+.axis-labels .right{color:var(--blue)}
+.matrix-container{position:relative;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.quadrants{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:260px}
+.q{border:0.5px solid var(--border);position:relative}
+.q.q-tl{background:#F5F4F0}
+.q.q-tr{background:#EEF2FF}
+.q.q-bl{background:#F8F7F2}
+.q.q-br{background:var(--blue-bg);border:1.5px solid var(--blue-bd)}
+.q-label{position:absolute;font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 7px}
+.q-label.global{color:var(--t3);top:0;left:0}
+.q-label.europe{color:var(--blue);top:0;left:0}
+/* Axis lines */
+.axis-h{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border);z-index:1;pointer-events:none}
+.axis-v{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--border);z-index:1;pointer-events:none}
+/* Competitor nodes */
+.cnode{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;z-index:2}
+.cnode-logo{border-radius:7px;background:#fff;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.cnode-lbl{font-size:6.5px;color:var(--t2);text-align:center;line-height:1.2;font-weight:500;max-width:56px}
+/* MCPilot hero node */
+.hero-node{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;gap:4px}
+.hero-ring{border-radius:50%;background:#fff;border:2.5px solid var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(37,99,235,.2)}
+.hero-lbl{font-size:8px;font-weight:700;color:var(--blue);text-align:center;line-height:1.3}
+
+/* Analysis cards */
+.insight-box{background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:8px;padding:10px;margin-bottom:10px}
+.ibl{font-size:9px;font-weight:700;color:var(--blue-dk);margin-bottom:4px}
+.ibt{font-size:11px;color:var(--blue-dk);line-height:1.5}
+.crow{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px;position:relative;overflow:hidden;margin-bottom:8px}
+.crow:last-child{margin-bottom:0}
+.crow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.crow.direct::before{background:var(--red)}
+.crow.adj::before{background:var(--amber)}
+.crow.fut::before{background:var(--t3)}
+.crhead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:8px;flex-wrap:wrap}
+.crname{font-size:12px;font-weight:600}
+.crbody{font-size:10px;color:var(--t2);line-height:1.5}
 
 /* ─── ARCHITECTURE ─── */
-.arch-layer{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;display:flex;gap:10px;position:relative;overflow:hidden}
-.layer-bar{position:absolute;left:0;top:0;bottom:0;width:3px}
-.layer-num-circle{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
-.layer-ttl{font-size:12px;font-weight:600;margin-bottom:3px}
-.layer-bdy{font-size:10px;color:var(--text2);line-height:1.5;margin-bottom:5px}
-.tag-row{display:flex;gap:4px;flex-wrap:wrap}
-.deploy-cloud{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:10px;padding:12px;margin-bottom:8px}
-.deploy-cloud-title{font-size:12px;font-weight:600;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:4px}
-.deploy-cloud-body{font-size:10px;color:var(--blue-dark);line-height:1.5;margin-bottom:3px}
-.deploy-cloud-note{font-size:9px;color:var(--blue);font-style:italic}
-.deploy-premise{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px}
-.deploy-premise-title{font-size:12px;font-weight:600;color:var(--text);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:4px}
-.compliance-dark{background:#1A1612;border-radius:10px;padding:12px}
-.comp-dark-ttl{font-size:10px;font-weight:600;color:#C4BFB5;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}
-.comp-dark-item{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #2A2520}
-.comp-dark-item:last-child{border-bottom:none}
-.check-icon{color:#6EE7B7;font-size:11px;flex-shrink:0;margin-top:1px}
-.comp-dark-text{font-size:10px;color:#A0978E;line-height:1.4}
-.comp-dark-text strong{color:#E8E0D5;display:block;font-size:10px;margin-bottom:1px}
+.alayer{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;display:flex;gap:10px;position:relative;overflow:hidden}
+.albar{position:absolute;left:0;top:0;bottom:0;width:3px}
+.anum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
+.altl{font-size:12px;font-weight:600;margin-bottom:3px}
+.albd{font-size:10px;color:var(--t2);line-height:1.5;margin-bottom:5px}
+.tagrow{display:flex;gap:4px;flex-wrap:wrap}
+.dcloud{background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:10px;padding:12px;margin-bottom:8px}
+.dctitle{font-size:12px;font-weight:600;color:var(--blue-dk);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:4px}
+.dprem{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px}
+.compd{background:#1A1612;border-radius:10px;padding:12px}
+.cdttl{font-size:10px;font-weight:600;color:#C4BFB5;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}
+.cdi{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #2A2520}
+.cdi:last-child{border-bottom:none}
+.chk{color:#6EE7B7;font-size:11px;flex-shrink:0;margin-top:1px}
+.cdt{font-size:10px;color:#A0978E;line-height:1.4}
+.cdt strong{color:#E8E0D5;display:block;font-size:10px;margin-bottom:1px}
 
-/* ─── TEAM ─── */
-.sophie-card{background:#1A1612;border-radius:12px;padding:18px;position:relative;overflow:hidden}
-.sophie-accent{position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
-.avatar-circle{width:48px;height:48px;border-radius:50%;background:#2A2520;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--blue);flex-shrink:0}
-.sophie-name{font-size:18px;font-weight:700;color:#F5F0EA}
-.sophie-role{font-size:11px;color:#6EE7B7}
-.xp-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #2A2520}
-.xp-item:last-child{border-bottom:none}
-.xp-co{font-size:9px;font-weight:700;color:var(--blue);width:56px;flex-shrink:0;padding-top:1px}
-.xp-role-txt{font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:1px}
-.xp-detail{font-size:9px;color:#6B6560;line-height:1.4}
-.cto-card{background:#fff;border:1.5px dashed var(--border2);border-radius:12px;padding:18px}
-.cto-avatar{width:48px;height:48px;border-radius:50%;background:var(--surface2);border:1.5px dashed var(--border2);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--border2);margin-bottom:10px}
-.cto-name{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:3px}
-.open-lbl{font-size:10px;color:var(--orange);font-weight:600;margin-bottom:12px;display:block}
-.profile-section-label{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:7px}
-.profile-li{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text2);padding:3px 0}
-.profile-li-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0}
+/* ─── TEAM (symmetric) ─── */
+.team-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:580px){.team-grid{grid-template-columns:1fr 1fr}}
+
+.person-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;overflow:hidden}
+.person-card .paccent{position:absolute;left:0;top:0;bottom:0;width:4px}
+.person-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0}
+.person-name{font-size:18px;font-weight:700;margin-bottom:2px}
+.person-role{font-size:11px;margin-bottom:0}
+.pxp-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.pxp-item:last-child{border-bottom:none}
+.pxp-co{font-size:9px;font-weight:700;width:58px;flex-shrink:0;padding-top:1px}
+.pxp-role{font-size:11px;font-weight:600;margin-bottom:1px}
+.pxp-detail{font-size:9px;color:var(--t3);line-height:1.4}
+
+/* Sophie = white card, blue accent */
+.sc-sophie{border-left:4px solid var(--blue);padding-left:16px}
+.sc-sophie .person-avatar{background:var(--blue-bg);border:2px solid var(--blue-bd);color:var(--blue)}
+.sc-sophie .person-name{color:var(--text)}
+.sc-sophie .person-role{color:var(--blue)}
+.sc-sophie .pxp-co{color:var(--blue)}
+.sc-sophie .pxp-role{color:var(--text)}
+
+/* CTO = white card, dashed border */
+.sc-cto{border:1.5px dashed var(--border2)}
+.sc-cto .person-avatar{background:var(--s2);border:1.5px dashed var(--border2);color:var(--border2);font-size:22px}
+.sc-cto .person-name{color:var(--t2)}
+.sc-cto .person-role{color:var(--orange);font-weight:600}
+.sc-cto .pxp-co{color:var(--t3)}
+.cto-li{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--t2);padding:3px 0}
+.cto-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0}
 
 /* ─── ASK ─── */
-.ask-wrap{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:640px){.ask-wrap{grid-template-columns:1fr 1fr}}
-.ask-left{display:flex;flex-direction:column;padding-right:0}
-@media(min-width:640px){.ask-left{padding-right:24px;border-right:1px solid var(--border)}}
-.ask-right{display:flex;flex-direction:column;padding-left:0}
-@media(min-width:640px){.ask-right{padding-left:8px}}
-.ask-amount{font-size:36px;font-weight:700;color:var(--text);margin:4px 0}
-@media(min-width:768px){.ask-amount{font-size:42px}}
-.ask-sub{font-size:12px;color:var(--text3);font-style:italic;margin-bottom:16px}
-.alloc-section-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:8px}
-.alloc-row{display:flex;align-items:center;gap:8px;padding:3px 0}
-.alloc-name{font-size:10px;color:var(--text2);width:160px;flex-shrink:0}
-.alloc-track{flex:1;height:5px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.alloc-fill{height:100%;border-radius:99px}
-.alloc-val{font-size:10px;font-weight:600;width:36px;text-align:right;flex-shrink:0}
-.ms-section-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:8px}
-.ms-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:7px;position:relative;overflow:hidden}
-.ms-bar{position:absolute;left:0;top:0;bottom:0;width:3px}
-.ms-content{padding-left:6px}
-.ms-tag{font-size:8px;font-weight:700;letter-spacing:1px;color:var(--text3);margin-bottom:2px}
-.ms-title{font-size:12px;font-weight:600;margin-bottom:2px}
-.ms-sub{font-size:9px;color:var(--text2)}
-.vcs-label{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:6px;margin-top:12px}
-.vcs-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.vc-chip{padding:4px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:99px;font-size:10px;color:var(--text2)}
-
-/* ─── CONTACT (last slide) ─── */
-.contact-card{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:12px;padding:20px;margin-top:16px}
-.contact-title{font-size:12px;font-weight:700;color:var(--blue-dark);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
-.contact-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.contact-row:last-child{margin-bottom:0}
-.contact-icon{width:32px;height:32px;border-radius:8px;background:#fff;border:1px solid var(--blue-border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.contact-label{font-size:10px;color:var(--blue-dark);opacity:.6;margin-bottom:1px}
-.contact-value{font-size:13px;font-weight:600;color:var(--blue-dark)}
-.contact-value a{color:var(--blue-dark);text-decoration:none}
-.contact-value a:hover{text-decoration:underline}
+.ask-grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:580px){.ask-grid{grid-template-columns:1fr 1fr}}
+.ask-left{display:flex;flex-direction:column}
+@media(min-width:580px){.ask-left{padding-right:20px;border-right:1px solid var(--border)}}
+.ask-right{display:flex;flex-direction:column}
+.ask-amt{font-size:36px;font-weight:700;margin:4px 0}
+@media(min-width:768px){.ask-amt{font-size:42px}}
+.ask-sub{font-size:12px;color:var(--t3);font-style:italic;margin-bottom:14px}
+.aslbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--t3);text-transform:uppercase;margin-bottom:8px}
+.arow{display:flex;align-items:center;gap:8px;padding:3px 0}
+.aname{font-size:10px;color:var(--t2);width:160px;flex-shrink:0}
+.atrack{flex:1;height:5px;background:var(--s2);border-radius:99px;overflow:hidden}
+.afill{height:100%;border-radius:99px}
+.aval{font-size:10px;font-weight:600;width:36px;text-align:right;flex-shrink:0}
+.mslbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--t3);text-transform:uppercase;margin-bottom:8px}
+.mscard{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:7px;position:relative;overflow:hidden}
+.msbar{position:absolute;left:0;top:0;bottom:0;width:3px}
+.msco{padding-left:6px}
+.mstag{font-size:8px;font-weight:700;letter-spacing:1px;color:var(--t3);margin-bottom:2px}
+.mstit{font-size:12px;font-weight:600;margin-bottom:2px}
+.mssub{font-size:9px;color:var(--t2)}
+.vclbl{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:6px;margin-top:10px}
+.vcrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.vcchip{padding:4px 12px;background:var(--s2);border:1px solid var(--border);border-radius:99px;font-size:10px;color:var(--t2)}
+.cct{background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:12px;padding:18px;margin-top:14px}
+.cctit{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.ccrow{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.ccrow:last-child{margin-bottom:0}
+.ccicon{width:32px;height:32px;border-radius:8px;background:#fff;border:1px solid var(--blue-bd);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.cclbl{font-size:10px;color:var(--blue-dk);opacity:.6;margin-bottom:1px}
+.ccval{font-size:13px;font-weight:600;color:var(--blue-dk)}
+.ccval a{color:var(--blue-dk);text-decoration:none}
+.ccval a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
 
-<!-- ── LOCK SCREEN ── -->
-<div id="lockscreen">
-  <div class="lock-card">
-    <div class="lock-logo">
-      <svg viewBox="0 0 24 28" fill="none">
-        <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-        <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+<!-- LOCK -->
+<div id="lock">
+  <div class="lcard">
+    <div class="llogo">
+      <svg width="26" height="30" viewBox="0 0 24 28" fill="none"><path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" stroke="#2563EB" stroke-width="1.5" fill="none"/><path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>MCPilot</span>
     </div>
-    <div class="lock-subtitle">This deck is confidential.<br>Enter the password to continue.</div>
-    <input class="lock-input" type="password" id="pwInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPw()">
-    <button class="lock-btn" onclick="checkPw()">Access deck →</button>
-    <div class="lock-error" id="pwError"></div>
-    <div class="lock-hint">Contact Sophie to request access.</div>
+    <div class="lsub">This deck is confidential.<br>Enter the password to continue.</div>
+    <input class="linput" type="password" id="pwi" placeholder="••••••••">
+    <button class="lbtn" onclick="chkpw()">Access deck →</button>
+    <div class="lerr" id="pwe"></div>
+    <div class="lhint">Contact Sophie to request access.</div>
   </div>
 </div>
 
-<!-- ── DECK ── -->
+<!-- DECK -->
 <div class="deck" id="deck" style="display:none">
-
   <div class="topbar">
-    <div class="topbar-brand">
-      <svg class="shield" viewBox="0 0 24 28" fill="none">
-        <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-        <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="brand-name">MCPilot</span>
-      <span class="brand-tag">— Seed Pitch Deck 2025</span>
+    <div class="tbrand">
+      <svg viewBox="0 0 24 28" fill="none"><path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 14l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="tbrand-name">MCPilot</span>
+      <span class="tbrand-tag">— Seed Pitch Deck 2025</span>
     </div>
-    <div class="topbar-nav">
+    <div class="tnav">
       <button class="btn" onclick="go(-1)">←</button>
-      <span class="slide-count" id="navCount">1 / 11</span>
+      <span class="scount" id="nc">1 / 11</span>
       <button class="btn" onclick="go(1)">→</button>
-      <button class="btn icon-btn" id="fsBtn" onclick="toggleFS()" title="Fullscreen">⛶</button>
+      <button class="btn ib" id="fsb" onclick="tgFS()" title="Fullscreen">⛶</button>
     </div>
   </div>
-  <div class="progress"><div class="progress-fill" id="prog" style="width:9.09%"></div></div>
+  <div class="pbar"><div class="pfill" id="pf" style="width:9.09%"></div></div>
 
-  <div class="slides-wrap">
+  <div class="swrap" id="swrap">
 
-    <!-- S1: COVER -->
-    <div class="slide active" id="s1">
-      <div class="cover-grid">
-        <div class="cover-left">
-          <div class="cover-logo">
-            <svg width="32" height="36" viewBox="0 0 24 28" fill="none">
-              <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-              <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>MCPilot</span>
-          </div>
-          <div class="cover-tagline">The control tower for AI agents</div>
-          <div class="cover-desc">MCP governance &amp; observability platform<br>natively built for Europe.</div>
-          <hr class="cover-divider">
-          <div style="font-size:16px;font-weight:600;margin-bottom:4px">Sophie</div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.7">CEO &amp; Co-founder · 12 years data/AI<br>Artefact · LVMH · Etam · QSRP</div>
-          <div class="cover-badges">
-            <span class="badge blue">EU AI Act</span>
-            <span class="badge blue">NIS2</span>
-            <span class="badge blue">GDPR</span>
-            <span class="badge gray">SOC2</span>
-          </div>
-        </div>
-        <div class="cover-right">
-          <div class="cover-right-inner">
-            <div class="cover-round-label">Seed Round</div>
-            <div class="cover-amount">€1,000,000</div>
-            <div class="cover-year">2025</div>
-          </div>
-          <div style="width:240px">
-            <div class="geo-block" style="background:var(--blue-bg);color:var(--blue-dark)">MCP GOVERNANCE</div>
-            <div class="geo-block" style="background:var(--surface2);color:var(--text2)">EU-FIRST · DATA SOVEREIGNTY</div>
-            <div class="geo-block" style="background:var(--green-bg);color:var(--green)">COMPLIANCE BY DESIGN</div>
-          </div>
-        </div>
+  <!-- S1: COVER -->
+  <div class="slide active" id="s1">
+    <div class="cover-center">
+      <div class="cover-logo">
+        <svg class="cover-shield" viewBox="0 0 24 28" fill="none">
+          <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" stroke="#2563EB" stroke-width="1.5" fill="none"/>
+          <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>MCPilot</span>
+      </div>
+      <div class="cover-tagline">The control tower for AI agents</div>
+      <div class="cover-desc">MCP governance &amp; observability platform natively built for Europe.</div>
+      <div class="cover-badges">
+        <span class="badge blue">EU AI Act</span>
+        <span class="badge blue">NIS2</span>
+        <span class="badge blue">GDPR</span>
+        <span class="badge gray">SOC2</span>
+      </div>
+      <div class="cover-visual">
+        <div class="cover-pill" style="background:var(--blue-bg);color:var(--blue-dk)">MCP GOVERNANCE</div>
+        <div class="cover-pill" style="background:var(--s2);color:var(--t2)">EU-FIRST</div>
+        <div class="cover-pill" style="background:var(--grn-bg);color:var(--green)">COMPLIANCE</div>
       </div>
     </div>
+  </div>
 
-    <!-- S2: PROBLEM -->
-    <div class="slide" id="s2">
-      <div class="sec-label">01 — The Problem</div>
-      <div class="sec-title">Enterprises deploying AI agents are <span>flying blind</span></div>
-      <div class="g3">
-        <div class="prob-card gold"><div class="prob-icon">⊙</div><div class="prob-title">Zero visibility</div><div class="prob-body">No enterprise knows exactly which AI agents are running, when, and with which data. MCP calls are a black box — unmonitored by design.</div></div>
-        <div class="prob-card copper"><div class="prob-icon">⚠</div><div class="prob-title">Immediate legal exposure</div><div class="prob-body">EU AI Act (2025) and NIS2 create a legal obligation to trace every significant AI system. Fines: up to 7% of global revenue for non-compliance.</div></div>
-        <div class="prob-card dark"><div class="prob-icon">◉</div><div class="prob-title">Incidents already documented</div><div class="prob-body">2025: documented MCP breaches at Asana and GitHub. Agents accessed unauthorized data — undetected. This is happening in production today.</div></div>
+  <!-- S2: PROBLEM -->
+  <div class="slide" id="s2">
+    <div class="slbl">01 — The Problem</div>
+    <div class="stitle">Enterprises deploying AI agents are <span>flying blind</span></div>
+    <div class="pcards">
+      <div class="pcard gold"><div class="picon">⊙</div><div class="ptitle">Zero visibility</div><div class="pbody">No enterprise knows exactly which AI agents are running, when, and with which data. MCP calls are a black box — unmonitored by design.</div></div>
+      <div class="pcard copper"><div class="picon">⚠</div><div class="ptitle">Immediate legal exposure</div><div class="pbody">EU AI Act (2025) and NIS2 create a legal obligation to trace every significant AI system. Fines: up to 7% of global revenue for non-compliance.</div></div>
+      <div class="pcard dark"><div class="picon">◉</div><div class="ptitle">Incidents already documented</div><div class="pbody">2025: documented MCP breaches at Asana and GitHub. Agents accessed unauthorized data — undetected. This is happening in production today.</div></div>
+    </div>
+  </div>
+
+  <!-- S3: SOLUTION -->
+  <div class="slide" id="s3">
+    <div class="slbl">02 — The Solution</div>
+    <div class="stitle">MCPilot — native MCP governance, <span>compliance-first</span></div>
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="pillar"><div class="pnum" style="background:var(--blue)">1</div><div><div style="font-size:13px;font-weight:600;margin-bottom:4px">Real-time cartography</div><div style="font-size:10px;color:var(--t2);line-height:1.55">Visualize every agent, MCP server and connection. Every new agent detected in under 60 seconds — no code changes required.</div></div></div>
+        <div class="pillar"><div class="pnum" style="background:var(--orange)">2</div><div><div style="font-size:13px;font-weight:600;margin-bottom:4px">Behavioral anomaly detection</div><div style="font-size:10px;color:var(--t2);line-height:1.55">Real-time alerts: privilege escalation, lateral movement, unusual access patterns. Know before it becomes an incident.</div></div></div>
+        <div class="pillar"><div class="pnum" style="background:var(--purple)">3</div><div><div style="font-size:13px;font-weight:600;margin-bottom:4px">One-click compliance reports</div><div style="font-size:10px;color:var(--t2);line-height:1.55">PDF/CSV export for EU AI Act, NIS2, GDPR. Audit-ready in seconds — no manual preparation, no consultant fees.</div></div></div>
+      </div>
+      <div class="dcard">
+        <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;color:#6EE7B7;text-transform:uppercase;margin-bottom:12px">Key differentiator</div>
+        <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">🇪🇺</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">AWS Paris eu-west-3</div><div style="font-size:10px;color:#6B6560">Data never leaves the EU</div></div></div>
+        <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">⚡</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">1-hour installation</div><div style="font-size:10px;color:#6B6560">Lightweight proxy or SDK wrapper</div></div></div>
+        <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">🔒</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">Metadata only</div><div style="font-size:10px;color:#6B6560">Payload content never stored</div></div></div>
+        <div style="display:flex;gap:12px;padding:9px 0"><span style="font-size:16px;flex-shrink:0">📋</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">Only MCP-native platform</div><div style="font-size:10px;color:#6B6560">built for Europe</div></div></div>
       </div>
     </div>
+  </div>
 
-    <!-- S3: SOLUTION -->
-    <div class="slide" id="s3">
-      <div class="sec-label">02 — The Solution</div>
-      <div class="sec-title">MCPilot — native MCP governance, <span>compliance-first</span></div>
-      <div class="g2">
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div class="pillar"><div class="pillar-num" style="background:var(--blue)">1</div><div><div class="pillar-title">Real-time cartography</div><div class="pillar-body">Visualize every agent, MCP server and connection. Every new agent detected in under 60 seconds — no code changes required.</div></div></div>
-          <div class="pillar"><div class="pillar-num" style="background:var(--orange)">2</div><div><div class="pillar-title">Behavioral anomaly detection</div><div class="pillar-body">Real-time alerts: privilege escalation, lateral movement, unusual access patterns. Know before it becomes an incident.</div></div></div>
-          <div class="pillar"><div class="pillar-num" style="background:var(--purple)">3</div><div><div class="pillar-title">One-click compliance reports</div><div class="pillar-body">PDF/CSV export for EU AI Act, NIS2, GDPR. Audit-ready in seconds — no manual preparation, no consultant fees.</div></div></div>
-        </div>
-        <div class="dark-card">
-          <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;color:#6EE7B7;text-transform:uppercase;margin-bottom:12px">Key differentiator</div>
-          <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">🇪🇺</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">AWS Paris eu-west-3</div><div style="font-size:10px;color:#6B6560">Data never leaves the EU</div></div></div>
-          <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">⚡</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">1-hour installation</div><div style="font-size:10px;color:#6B6560">Lightweight proxy or SDK wrapper</div></div></div>
-          <div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #2A2520"><span style="font-size:16px;flex-shrink:0">🔒</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">Metadata only</div><div style="font-size:10px;color:#6B6560">Payload content never stored</div></div></div>
-          <div style="display:flex;gap:12px;padding:9px 0"><span style="font-size:16px;flex-shrink:0">📋</span><div><div style="font-size:11px;font-weight:600;color:#E8E0D5;margin-bottom:2px">Only MCP-native platform</div><div style="font-size:10px;color:#6B6560">built for Europe</div></div></div>
-        </div>
-      </div>
+  <!-- S4: MARKET -->
+  <div class="slide" id="s4">
+    <div class="slbl">03 — Market</div>
+    <div class="stitle">A nascent market — and an <span>imminent legal obligation</span></div>
+    <div class="g3" style="margin-bottom:14px">
+      <div class="mcard" style="background:#1A1612"><div class="mlbl">TAM</div><div class="mval">€400M</div><div style="font-size:11px;opacity:.8;margin-bottom:6px">Global MCP governance market</div><div style="font-size:10px;opacity:.5">2026 → $4.5B by 2030</div></div>
+      <div class="mcard" style="background:#1E3A5F"><div class="mlbl">SAM</div><div class="mval">€40M</div><div style="font-size:11px;opacity:.8;margin-bottom:6px">EU enterprises deploying MCP</div><div style="font-size:10px;opacity:.5">10% of EU-first market</div></div>
+      <div class="mcard" style="background:var(--blue)"><div class="mlbl">SOM</div><div class="mval">€4.4M</div><div style="font-size:11px;opacity:.8;margin-bottom:6px">Year 3 target — EU Retail</div><div style="font-size:10px;opacity:.5">Bottom-up · 395 clients · NRR 120%</div></div>
     </div>
-
-    <!-- S4: MARKET -->
-    <div class="slide" id="s4">
-      <div class="sec-label">03 — Market</div>
-      <div class="sec-title">A nascent market — and an <span>imminent legal obligation</span></div>
-      <div class="g3" style="margin-bottom:14px">
-        <div class="market-card" style="background:#1A1612"><div class="market-label">TAM</div><div class="market-value">€400M</div><div class="market-sub">Global MCP governance market</div><div class="market-note">2026 → $4.5B by 2030</div></div>
-        <div class="market-card" style="background:#1E3A5F"><div class="market-label">SAM</div><div class="market-value">€40M</div><div class="market-sub">EU enterprises deploying MCP</div><div class="market-note">10% of EU-first market</div></div>
-        <div class="market-card" style="background:var(--blue)"><div class="market-label">SOM</div><div class="market-value">€4.4M</div><div class="market-sub">Year 3 target — EU Retail</div><div class="market-note">Bottom-up · 395 clients · NRR 120%</div></div>
-      </div>
-      <div class="card">
-        <div class="driver-row"><div class="driver-dot"></div><div class="driver-text">EU AI Act in force — traceability mandatory for high-risk AI systems from 2025</div></div>
-        <div class="driver-row"><div class="driver-dot"></div><div class="driver-text">97M+ MCP SDK downloads/month — exponential enterprise adoption in 2025</div></div>
-        <div class="driver-row"><div class="driver-dot"></div><div class="driver-text">Zero specialized player positioned on Europe — the quadrant is wide open</div></div>
-      </div>
+    <div class="card">
+      <div style="display:flex;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border)"><div style="width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0"></div><div style="font-size:11px;color:var(--t2)">EU AI Act in force — traceability mandatory for high-risk AI systems from 2025</div></div>
+      <div style="display:flex;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border)"><div style="width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0"></div><div style="font-size:11px;color:var(--t2)">97M+ MCP SDK downloads/month — exponential enterprise adoption in 2025</div></div>
+      <div style="display:flex;gap:8px;align-items:center;padding:5px 0"><div style="width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0"></div><div style="font-size:11px;color:var(--t2)">Zero specialized player positioned on Europe — the quadrant is wide open</div></div>
     </div>
+  </div>
 
-    <!-- S5: PRODUCT -->
-    <div class="slide" id="s5">
-      <div class="sec-label">04 — Product</div>
-      <div class="sec-title" style="margin-bottom:10px">Dashboard MCPilot — <span>total control in real time</span></div>
-      <div class="dash-wrap">
-        <div class="dash-topbar">
-          <span class="dash-tb-left">MCPilot · AXA France — Production · 13 March 2026  14:32</span>
-          <span class="dash-tb-right"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:4px"></span>47 connected</span>
+  <!-- S5: PRODUCT -->
+  <div class="slide" id="s5">
+    <div class="slbl">04 — Product</div>
+    <div class="stitle" style="margin-bottom:10px">Dashboard MCPilot — <span>total control in real time</span></div>
+    <div class="dwrap">
+      <div class="dtop">
+        <span style="color:var(--t2)">MCPilot · AXA France — Production · 13 March 2026  14:32</span>
+        <span style="color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green)"></span>47 connected</span>
+      </div>
+      <div class="dlayout">
+        <div class="dsidebar">
+          <div class="dnav active">Vue d'ensemble</div>
+          <div class="dnav">Agents IA</div>
+          <div class="dnav">Serveurs MCP</div>
+          <div class="dnav al">Alertes  3</div>
+          <div class="dnav">Compliance</div>
+          <div class="dnav">FinOps</div>
         </div>
-        <div class="dash-layout">
-          <div class="dash-sidebar">
-            <div class="dash-nav active">Vue d'ensemble</div>
-            <div class="dash-nav">Agents IA</div>
-            <div class="dash-nav">Serveurs MCP</div>
-            <div class="dash-nav alert-item">Alertes  3</div>
-            <div class="dash-nav">Compliance</div>
-            <div class="dash-nav">FinOps</div>
+        <div class="dmain">
+          <div class="krow">
+            <div class="kpi"><div class="kl">Active Agents</div><div class="kv">47</div><div class="kn">↑ 12 this month</div></div>
+            <div class="kpi"><div class="kl">MCP Servers</div><div class="kv">23</div><div class="kn">8 undeclared</div></div>
+            <div class="kpi"><div class="kl">Active Alerts</div><div class="kv r">3</div><div class="kn">1 critical</div></div>
+            <div class="kpi"><div class="kl">Compliance Score</div><div class="kv g">87%</div><div class="kn">EU AI Act · NIS2</div></div>
           </div>
-          <div class="dash-main">
-            <div class="kpi-row">
-              <div class="kpi"><div class="kpi-label">Active Agents</div><div class="kpi-val">47</div><div class="kpi-note">↑ 12 this month</div></div>
-              <div class="kpi"><div class="kpi-label">MCP Servers</div><div class="kpi-val">23</div><div class="kpi-note">8 undeclared</div></div>
-              <div class="kpi"><div class="kpi-label">Active Alerts</div><div class="kpi-val red">3</div><div class="kpi-note">1 critical</div></div>
-              <div class="kpi"><div class="kpi-label">Compliance Score</div><div class="kpi-val green">87%</div><div class="kpi-note">EU AI Act · NIS2</div></div>
+          <div class="dpanels">
+            <div class="panel">
+              <div class="ptl">MCP Flow Mapping <span class="apill">⚠ 1 anomaly</span></div>
+              <svg width="100%" height="88" viewBox="0 0 280 88">
+                <ellipse cx="42" cy="18" rx="30" ry="11" fill="#F8F7F2" stroke="#2563EB" stroke-width="0.8"/><text x="42" y="22" text-anchor="middle" font-size="7" fill="#1E40AF" font-family="sans-serif">Agent Commercial</text>
+                <ellipse cx="42" cy="44" rx="30" ry="11" fill="#FFF7ED" stroke="#EA580C" stroke-width="1" stroke-dasharray="3,2"/><text x="42" y="48" text-anchor="middle" font-size="7" fill="#EA580C" font-family="sans-serif">Agent Compliance</text>
+                <ellipse cx="42" cy="70" rx="30" ry="11" fill="#F8F7F2" stroke="#2563EB" stroke-width="0.8"/><text x="42" y="74" text-anchor="middle" font-size="7" fill="#1E40AF" font-family="sans-serif">Agent Analytics</text>
+                <rect x="150" y="7" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="18" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">SAP ERP</text>
+                <rect x="150" y="28" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="39" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">Salesforce CRM</text>
+                <rect x="150" y="49" width="70" height="15" rx="3" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1"/><text x="185" y="60" text-anchor="middle" font-size="7" fill="#EA580C" font-family="sans-serif">⚠ Slack non déclaré</text>
+                <rect x="150" y="70" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="81" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">PostgreSQL</text>
+                <line x1="72" y1="18" x2="150" y2="14" stroke="#C7D2FE" stroke-width="0.8"/>
+                <line x1="72" y1="18" x2="150" y2="35" stroke="#C7D2FE" stroke-width="0.8"/>
+                <line x1="72" y1="44" x2="150" y2="56" stroke="#FDBA74" stroke-width="1" stroke-dasharray="3,2"/>
+                <line x1="72" y1="70" x2="150" y2="77" stroke="#C7D2FE" stroke-width="0.8"/>
+                <text x="92" y="41" font-size="7" fill="#EA580C" font-family="sans-serif" font-style="italic">accès inhabituel</text>
+              </svg>
             </div>
-            <div class="dash-panels">
-              <div class="panel">
-                <div class="panel-title">MCP Flow Mapping <span class="anomaly-pill">⚠ 1 anomaly</span></div>
-                <svg width="100%" height="88" viewBox="0 0 280 88">
-                  <ellipse cx="42" cy="18" rx="30" ry="11" fill="#F8F7F2" stroke="#2563EB" stroke-width="0.8"/><text x="42" y="22" text-anchor="middle" font-size="7" fill="#1E40AF" font-family="sans-serif">Agent Commercial</text>
-                  <ellipse cx="42" cy="44" rx="30" ry="11" fill="#FFF7ED" stroke="#EA580C" stroke-width="1" stroke-dasharray="3,2"/><text x="42" y="48" text-anchor="middle" font-size="7" fill="#EA580C" font-family="sans-serif">Agent Compliance</text>
-                  <ellipse cx="42" cy="70" rx="30" ry="11" fill="#F8F7F2" stroke="#2563EB" stroke-width="0.8"/><text x="42" y="74" text-anchor="middle" font-size="7" fill="#1E40AF" font-family="sans-serif">Agent Analytics</text>
-                  <rect x="150" y="7" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="18" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">SAP ERP</text>
-                  <rect x="150" y="28" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="39" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">Salesforce CRM</text>
-                  <rect x="150" y="49" width="70" height="15" rx="3" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1"/><text x="185" y="60" text-anchor="middle" font-size="7" fill="#EA580C" font-family="sans-serif">⚠ Slack non déclaré</text>
-                  <rect x="150" y="70" width="70" height="15" rx="3" fill="white" stroke="#E8E4DC" stroke-width="0.5"/><text x="185" y="81" text-anchor="middle" font-size="7" fill="#5A5248" font-family="sans-serif">PostgreSQL</text>
-                  <line x1="72" y1="18" x2="150" y2="14" stroke="#C7D2FE" stroke-width="0.8"/>
-                  <line x1="72" y1="18" x2="150" y2="35" stroke="#C7D2FE" stroke-width="0.8"/>
-                  <line x1="72" y1="44" x2="150" y2="56" stroke="#FDBA74" stroke-width="1" stroke-dasharray="3,2"/>
-                  <line x1="72" y1="70" x2="150" y2="77" stroke="#C7D2FE" stroke-width="0.8"/>
-                  <text x="92" y="41" font-size="7" fill="#EA580C" font-family="sans-serif" font-style="italic">accès inhabituel</text>
-                </svg>
-              </div>
-              <div class="panel" style="display:flex;flex-direction:column;align-items:center">
-                <div class="panel-title" style="width:100%">EU AI ACT · NIS2</div>
-                <div class="score-num">87</div>
-                <div class="score-sub">/ 100 · Conforme ✓</div>
-                <div style="border-top:1px solid var(--border);width:100%;margin:7px 0"></div>
-                <div style="width:100%;font-size:8px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Recent alerts</div>
-                <div style="width:100%;font-size:9px;line-height:1.9"><div><span style="color:var(--red)">●</span> Unusual Slack access · 4 min</div><div><span style="color:var(--orange)">●</span> Undeclared server · 23 min</div><div><span style="color:var(--amber)">●</span> Unusual data access · 1h</div></div>
-              </div>
-            </div>
-            <div style="background:var(--surface2);border-radius:6px;padding:7px">
-              <div style="font-size:7px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Real-time activity</div>
-              <table class="act-table">
-                <tr><td class="act-time">14:32:08</td><td style="color:var(--text2)">Agent Commercial → Salesforce <code>get_opportunities</code></td><td><span class="act-tag-ok">42ms</span></td></tr>
-                <tr><td class="act-time">14:31:54</td><td style="color:var(--text2)">Agent Compliance → Slack <code>list_channels</code></td><td><span class="act-tag-anom">Anomalie</span></td></tr>
-                <tr><td class="act-time">14:31:41</td><td style="color:var(--text2)">Agent Analytics → PostgreSQL <code>query_metrics</code></td><td><span class="act-tag-ok">128ms</span></td></tr>
-              </table>
+            <div class="panel" style="display:flex;flex-direction:column;align-items:center">
+              <div class="ptl" style="width:100%">EU AI ACT · NIS2</div>
+              <div class="snum">87</div>
+              <div class="ssub">/ 100 · Conforme ✓</div>
+              <div style="border-top:1px solid var(--border);width:100%;margin:7px 0"></div>
+              <div style="width:100%;font-size:8px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Recent alerts</div>
+              <div style="width:100%;font-size:9px;line-height:1.9"><div><span style="color:var(--red)">●</span> Unusual Slack access · 4 min</div><div><span style="color:var(--orange)">●</span> Undeclared server · 23 min</div><div><span style="color:var(--amber)">●</span> Unusual data access · 1h</div></div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card" style="margin-top:10px">
-        <div class="bullet-row"><div class="bullet-bar" style="background:var(--blue)"></div><div class="bullet-text"><strong>47 agents in production, mapped in real time</strong>Including 8 previously undeclared — detected automatically on first connection</div></div>
-        <div class="bullet-row"><div class="bullet-bar" style="background:var(--orange)"></div><div class="bullet-text"><strong>Anomaly detected at 14:31</strong>Agent Compliance accessing Slack via undeclared server — flagged before any data exfiltration</div></div>
-        <div class="bullet-row"><div class="bullet-bar" style="background:var(--green)"></div><div class="bullet-text"><strong>Compliance score 87/100</strong>Exportable in 1 click for EU AI Act audit — no manual preparation required</div></div>
-      </div>
-    </div>
-
-    <!-- S6: BUSINESS MODEL -->
-    <div class="slide" id="s6">
-      <div class="sec-label">05 — Business Model</div>
-      <div class="sec-title">Per MCP server — <span>predictable, expansive, non-optional</span></div>
-      <div class="tier-wrap">
-        <div class="tier starter">
-          <div class="tier-name">STARTER</div><div class="tier-price">Free</div><div class="tier-note">forever</div><div class="tier-unit">Up to 3 MCP servers</div>
-          <hr class="tier-line">
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>Flow cartography</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>Real-time dashboard</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>Basic alerts</div>
-          <div class="feat off"><div class="feat-dot" style="background:var(--border2)"></div>EU AI Act compliance</div>
-          <div class="feat off"><div class="feat-dot" style="background:var(--border2)"></div>Audit reports</div>
-          <div class="feat off"><div class="feat-dot" style="background:var(--border2)"></div>SSO / Identity</div>
-          <div class="tier-cta" style="background:var(--surface2);color:var(--text2);border:1px solid var(--border)">Acquisition · Bottom-up</div>
-        </div>
-        <div class="tier pro">
-          <div class="tier-badge-wrap"><div class="tier-badge-pill">Core target</div></div>
-          <div class="tier-name" style="color:var(--blue)">PRO</div><div class="tier-price">€790</div><div class="tier-note">/ server / year</div><div class="tier-unit">From 4 MCP servers</div>
-          <hr class="tier-line" style="border-color:var(--blue-border)">
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>Everything in Starter</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>AI anomaly detection</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div>
-          <div class="feat on"><div class="feat-dot" style="background:var(--blue)"></div>SIEM integrations</div>
-          <div class="feat off"><div class="feat-dot" style="background:var(--border2)"></div>On-premise deployment</div>
-          <div class="tier-example">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div>
-        </div>
-        <div class="tier enterprise">
-          <div class="tier-name">ENTERPRISE</div><div class="tier-price" style="font-size:22px;color:#F5F0EA">Custom</div><div class="tier-note">30+ MCP servers</div><div class="tier-unit">Regulated sectors</div>
-          <hr class="tier-line">
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>Everything in Pro</div>
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>On-premise deployment</div>
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div>
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div>
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>Dedicated CSM</div>
-          <div class="feat on"><div class="feat-dot" style="background:#6EE7B7"></div>CISO / CTO training</div>
-          <div class="tier-cta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div>
-        </div>
-      </div>
-      <div class="g2">
-        <div class="surface">
-          <div style="font-size:10px;font-weight:600;margin-bottom:8px">Unit economics · Year 3</div>
-          <table style="width:100%;font-size:10px;border-collapse:collapse">
-            <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Pro clients (avg. 12 servers)</td><td style="text-align:right;font-weight:600">380</td></tr>
-            <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Enterprise clients</td><td style="text-align:right;font-weight:600">15</td></tr>
-            <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Avg ACV Pro</td><td style="text-align:right;font-weight:600">€9,480</td></tr>
-            <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Avg ACV Enterprise</td><td style="text-align:right;font-weight:600">€55,000</td></tr>
-            <tr><td style="padding:5px 0;font-weight:600;font-size:12px">ARR Year 3</td><td style="text-align:right;font-weight:700;font-size:13px;color:var(--green)">~€4.4M</td></tr>
-          </table>
-        </div>
-        <div class="surface">
-          <div style="font-size:10px;font-weight:600;margin-bottom:8px">Why this model is defensible</div>
-          <div style="display:flex;gap:8px;margin-bottom:8px"><span style="color:var(--green);font-size:14px">↑</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Natural growth</div><div style="font-size:10px;color:var(--text2)">More agents deployed = more MCP servers = higher invoice automatically</div></div></div>
-          <div style="display:flex;gap:8px;margin-bottom:8px"><span style="color:var(--blue);font-size:14px">⇄</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Near-zero churn</div><div style="font-size:10px;color:var(--text2)">Compliance product — never removed once installed. NRR target &gt;120%</div></div></div>
-          <div style="display:flex;gap:8px"><span style="color:var(--orange);font-size:14px">§</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Legal obligation</div><div style="font-size:10px;color:var(--text2)">EU AI Act makes the purchase non-optional in regulated sectors</div></div></div>
+          <div style="background:var(--s2);border-radius:6px;padding:7px">
+            <div style="font-size:7px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Real-time activity</div>
+            <table class="atable"><tr><td class="at">14:32:08</td><td style="color:var(--t2)">Agent Commercial → Salesforce <code>get_opportunities</code></td><td><span class="tok">42ms</span></td></tr><tr><td class="at">14:31:54</td><td style="color:var(--t2)">Agent Compliance → Slack <code>list_channels</code></td><td><span class="tanom">Anomalie</span></td></tr><tr><td class="at">14:31:41</td><td style="color:var(--t2)">Agent Analytics → PostgreSQL <code>query_metrics</code></td><td><span class="tok">128ms</span></td></tr></table>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- S7: GTM -->
-    <div class="slide" id="s7">
-      <div class="sec-label">06 — Go-to-Market</div>
-      <div class="sec-title">EU Retail beachhead — <span>3 phases, Artefact as launch pad</span></div>
-      <div class="g3" style="margin-bottom:10px">
-        <div class="phase p1">
-          <div class="phase-num-row"><div class="phase-circle" style="background:var(--blue)">1</div><span class="phase-range" style="color:var(--blue)">M0 → M6</span></div>
-          <div class="phase-title2">Beachhead</div>
-          <div class="channel-chip" style="background:var(--blue-bg);color:var(--blue-dark);border:1px solid var(--blue-border)">Artefact as first channel</div>
-          <div class="phase-li">Convert 2-3 Artefact AI practice leads into internal ambassadors</div>
-          <div class="phase-li">Offer MCPilot as "free MCP audit" to Artefact clients deploying agents</div>
-          <div class="phase-li">Target: 5 signed pilots, 3 documented case studies</div>
-          <div class="phase-stat-row"><div class="phase-stat"><div class="phase-stat-num" style="color:var(--blue)">5</div><div class="phase-stat-lbl">pilot clients</div></div><div class="phase-stat"><div class="phase-stat-num" style="color:var(--blue)">~€50k</div><div class="phase-stat-lbl">Initial ARR</div></div></div>
-        </div>
-        <div class="phase p2">
-          <div class="phase-num-row"><div class="phase-circle" style="background:var(--orange)">2</div><span class="phase-range" style="color:var(--orange)">M6 → M18</span></div>
-          <div class="phase-title2">Scale</div>
-          <div class="channel-chip" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">Certified integrator network</div>
-          <div class="phase-li">Partner program: 5-8 SIs reselling MCPilot (Capgemini, Sopra, Devoteam…)</div>
-          <div class="phase-li">Thought leadership: EU AI Act whitepaper, CISO webinars</div>
-          <div class="phase-li">First commercial hire at M9 — outbound on regulated sectors</div>
-          <div class="phase-stat-row"><div class="phase-stat"><div class="phase-stat-num" style="color:var(--orange)">50</div><div class="phase-stat-lbl">active clients</div></div><div class="phase-stat"><div class="phase-stat-num" style="color:var(--orange)">~€600k</div><div class="phase-stat-lbl">ARR Year 1</div></div></div>
-        </div>
-        <div class="phase p3">
-          <div class="phase-num-row"><div class="phase-circle" style="background:var(--green)">3</div><span class="phase-range" style="color:var(--green)">M18 → M36</span></div>
-          <div class="phase-title2">EU Domination</div>
-          <div class="channel-chip" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">Inbound + account expansion</div>
-          <div class="phase-li">MCPilot becomes the EU AI Act compliance reference for MCP</div>
-          <div class="phase-li">Sector expansion: finance, healthcare, industry — dedicated case studies</div>
-          <div class="phase-li">NRR &gt;120% driven by natural MCP server growth per account</div>
-          <div class="phase-stat-row"><div class="phase-stat"><div class="phase-stat-num" style="color:var(--green)">400</div><div class="phase-stat-lbl">active clients</div></div><div class="phase-stat"><div class="phase-stat-num" style="color:var(--green)">~€4.4M</div><div class="phase-stat-lbl">ARR Year 3</div></div></div>
-        </div>
-      </div>
-      <div class="artefact-strip">
-        <div style="font-size:10px;font-weight:600;margin-bottom:8px">Why Artefact is a launch pad, not just a network</div>
-        <div class="g3" style="gap:10px">
-          <div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Direct access to decision-makers</div><div style="font-size:10px;color:var(--text2)">Artefact consultants are already inside the COMEXs deploying AI agents</div></div>
-          <div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Zero-cost evangelization</div><div style="font-size:10px;color:var(--text2)">A consultant recommending MCPilot = instant credibility, zero acquisition cost</div></div>
-          <div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Reseller model possible</div><div style="font-size:10px;color:var(--text2)">Artefact bundles MCPilot into AI deployment offers — commission on each contract</div></div>
-        </div>
-      </div>
+    <div class="card" style="margin-top:10px">
+      <div class="brow"><div class="bbar" style="background:var(--blue)"></div><div class="btxt"><strong>47 agents in production, mapped in real time</strong>Including 8 previously undeclared — detected automatically on first connection</div></div>
+      <div class="brow"><div class="bbar" style="background:var(--orange)"></div><div class="btxt"><strong>Anomaly detected at 14:31</strong>Agent Compliance accessing Slack via undeclared server — flagged before any data exfiltration</div></div>
+      <div class="brow"><div class="bbar" style="background:var(--green)"></div><div class="btxt"><strong>Compliance score 87/100</strong>Exportable in 1 click for EU AI Act audit — no manual preparation required</div></div>
     </div>
+  </div>
 
-    <!-- S8: COMPETITION -->
-    <div class="slide" id="s8">
-      <div class="sec-label">07 — Competition</div>
-      <div class="sec-title">MCPilot <span>alone in its quadrant</span></div>
-      <div class="g2">
-        <div>
-          <div class="axis-x-row"><span>← GENERALIST</span><span class="right">MCP SPECIALIST →</span></div>
-          <div class="matrix-outer">
-            <div class="matrix-body">
-              <div class="quad" style="background:var(--surface2)">
-                <div class="quad-axis-label">GLOBAL</div>
-                <div class="comp-node" style="left:12px;top:20px"><div class="comp-circle" style="width:38px;height:38px"></div><div class="comp-lbl">Datadog<br>Observability</div></div>
-                <div class="comp-node" style="right:10px;top:26px"><div class="comp-circle" style="width:22px;height:22px"></div><div class="comp-lbl">Kong<br>API gw</div></div>
-                <div class="comp-node" style="left:8px;bottom:10px"><div class="comp-circle" style="width:20px;height:20px"></div><div class="comp-lbl">Cloudflare<br>Infra</div></div>
+  <!-- S6: BUSINESS MODEL -->
+  <div class="slide" id="s6">
+    <div class="slbl">05 — Business Model</div>
+    <div class="stitle">Per MCP server — <span>predictable, expansive, non-optional</span></div>
+    <div class="twrap">
+      <div class="tier s"><div class="tnm">STARTER</div><div class="tpr">Free</div><div class="tnt">forever</div><div class="tu">Up to 3 MCP servers</div><hr class="tline"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Flow cartography</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Real-time dashboard</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Basic alerts</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>EU AI Act compliance</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>Audit reports</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>SSO / Identity</div><div class="tcta" style="background:var(--s2);color:var(--t2);border:1px solid var(--border)">Acquisition · Bottom-up</div></div>
+      <div class="tier p"><div class="tbadge">Core target</div><div class="tnm" style="color:var(--blue)">PRO</div><div class="tpr">€790</div><div class="tnt">/ server / year</div><div class="tu">From 4 MCP servers</div><hr class="tline" style="border-color:var(--blue-bd)"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Everything in Starter</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>AI anomaly detection</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SIEM integrations</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>On-premise deployment</div><div class="tex">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div></div>
+      <div class="tier e"><div class="tnm">ENTERPRISE</div><div class="tpr" style="font-size:22px">Custom</div><div class="tnt">30+ MCP servers</div><div class="tu">Regulated sectors</div><hr class="tline"><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Everything in Pro</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>On-premise deployment</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Dedicated CSM</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>CISO / CTO training</div><div class="tcta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div></div>
+    </div>
+    <div class="g2">
+      <div class="surf"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Unit economics · Year 3</div><table style="width:100%;font-size:10px;border-collapse:collapse"><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Pro clients (avg. 12 servers)</td><td style="text-align:right;font-weight:600">380</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Enterprise clients</td><td style="text-align:right;font-weight:600">15</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Pro</td><td style="text-align:right;font-weight:600">€9,480</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Enterprise</td><td style="text-align:right;font-weight:600">€55,000</td></tr><tr><td style="padding:5px 0;font-weight:600;font-size:12px">ARR Year 3</td><td style="text-align:right;font-weight:700;font-size:13px;color:var(--green)">~€4.4M</td></tr></table></div>
+      <div class="surf"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Why this model is defensible</div><div style="display:flex;gap:8px;margin-bottom:8px"><span style="color:var(--green);font-size:14px">↑</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Natural growth</div><div style="font-size:10px;color:var(--t2)">More agents deployed = more MCP servers = higher invoice automatically</div></div></div><div style="display:flex;gap:8px;margin-bottom:8px"><span style="color:var(--blue);font-size:14px">⇄</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Near-zero churn</div><div style="font-size:10px;color:var(--t2)">Compliance product — never removed once installed. NRR &gt;120%</div></div></div><div style="display:flex;gap:8px"><span style="color:var(--orange);font-size:14px">§</span><div><div style="font-size:11px;font-weight:600;margin-bottom:2px">Legal obligation</div><div style="font-size:10px;color:var(--t2)">EU AI Act makes the purchase non-optional in regulated sectors</div></div></div></div>
+    </div>
+  </div>
+
+  <!-- S7: GTM -->
+  <div class="slide" id="s7">
+    <div class="slbl">06 — Go-to-Market</div>
+    <div class="stitle">EU Retail beachhead — <span>3 phases, Artefact as launch pad</span></div>
+    <div class="g3" style="margin-bottom:10px">
+      <div class="phase p1"><div class="pnr"><div class="pci" style="background:var(--blue)">1</div><span class="prng" style="color:var(--blue)">M0 → M6</span></div><div class="ptit">Beachhead</div><div class="chip" style="background:var(--blue-bg);color:var(--blue-dk);border:1px solid var(--blue-bd)">Artefact as first channel</div><div class="pli">Convert 2-3 Artefact AI practice leads into internal ambassadors</div><div class="pli">Offer MCPilot as "free MCP audit" to Artefact clients deploying agents</div><div class="pli">Target: 5 signed pilots, 3 documented case studies</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--blue)">5</div><div class="psl">pilot clients</div></div><div class="pstat"><div class="psn" style="color:var(--blue)">~€50k</div><div class="psl">Initial ARR</div></div></div></div>
+      <div class="phase p2"><div class="pnr"><div class="pci" style="background:var(--orange)">2</div><span class="prng" style="color:var(--orange)">M6 → M18</span></div><div class="ptit">Scale</div><div class="chip" style="background:var(--org-bg);color:var(--orange);border:1px solid var(--org-bd)">Certified integrator network</div><div class="pli">Partner program: 5-8 SIs reselling MCPilot (Capgemini, Sopra, Devoteam…)</div><div class="pli">Thought leadership: EU AI Act whitepaper, CISO webinars</div><div class="pli">First commercial hire at M9 — outbound on regulated sectors</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--orange)">50</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--orange)">~€600k</div><div class="psl">ARR Year 1</div></div></div></div>
+      <div class="phase p3"><div class="pnr"><div class="pci" style="background:var(--green)">3</div><span class="prng" style="color:var(--green)">M18 → M36</span></div><div class="ptit">EU Domination</div><div class="chip" style="background:var(--grn-bg);color:var(--green);border:1px solid var(--grn-bd)">Inbound + account expansion</div><div class="pli">MCPilot becomes the EU AI Act compliance reference for MCP</div><div class="pli">Sector expansion: finance, healthcare, industry — dedicated case studies</div><div class="pli">NRR &gt;120% driven by natural MCP server growth per account</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--green)">400</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--green)">~€4.4M</div><div class="psl">ARR Year 3</div></div></div></div>
+    </div>
+    <div class="astrip"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Why Artefact is a launch pad, not just a network</div><div class="g3" style="gap:10px"><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Direct access to decision-makers</div><div style="font-size:10px;color:var(--t2)">Artefact consultants are already inside the COMEXs deploying AI agents</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Zero-cost evangelization</div><div style="font-size:10px;color:var(--t2)">A consultant recommending MCPilot = instant credibility, zero acquisition cost</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Reseller model possible</div><div style="font-size:10px;color:var(--t2)">Artefact bundles MCPilot into AI deployment offers — commission on each contract</div></div></div></div>
+  </div>
+
+  <!-- S8: COMPETITION — improved map with logos -->
+  <div class="slide" id="s8">
+    <div class="slbl">07 — Competition</div>
+    <div class="stitle">MCPilot <span>alone in its quadrant</span></div>
+    <div class="comp-layout">
+      <!-- MATRIX -->
+      <div class="matrix-wrap">
+        <div class="axis-labels"><span>← GENERALIST</span><span class="right">MCP SPECIALIST →</span></div>
+        <div class="matrix-container">
+          <div class="axis-h"></div>
+          <div class="axis-v"></div>
+          <div class="quadrants">
+            <div class="q q-tl">
+              <div class="q-label global">GLOBAL</div>
+              <!-- Datadog -->
+              <div class="cnode" style="left:10px;top:28px">
+                <div class="cnode-logo" style="width:40px;height:40px">
+                  <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#774AA4"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">DD</text></svg>
+                </div>
+                <div class="cnode-lbl">Datadog<br>Observability</div>
               </div>
-              <div class="quad" style="background:#F0F4FF">
-                <div class="comp-node" style="left:16px;top:20px"><div class="comp-circle" style="width:32px;height:32px;background:var(--blue-bg);border-color:var(--blue-border)"></div><div class="comp-lbl" style="color:var(--blue-dark)">Runlayer<br>$11M·US</div></div>
-                <div class="comp-node" style="right:10px;bottom:16px"><div class="comp-circle" style="width:22px;height:22px"></div><div class="comp-lbl">MintMCP<br>Gateway</div></div>
+              <!-- Kong -->
+              <div class="cnode" style="right:28px;top:34px">
+                <div class="cnode-logo" style="width:30px;height:30px">
+                  <svg width="22" height="22" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#003459"/><text x="20" y="26" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif" font-weight="bold">K</text></svg>
+                </div>
+                <div class="cnode-lbl">Kong</div>
               </div>
-              <div class="quad" style="background:var(--surface2)"><div class="quad-axis-label" style="color:var(--blue)">EUROPE</div></div>
-              <div class="quad hero">
-                <div class="hero-oval"><div class="hero-oval-inner"><div class="hero-oval-text">MCPilot<br>EU · MCP native<br>Specialist</div></div></div>
+              <!-- Cloudflare -->
+              <div class="cnode" style="left:14px;bottom:20px">
+                <div class="cnode-logo" style="width:30px;height:30px">
+                  <svg width="22" height="22" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#F6821F"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">CF</text></svg>
+                </div>
+                <div class="cnode-lbl">Cloudflare</div>
+              </div>
+            </div>
+            <!-- TR: Global + MCP Specialist -->
+            <div class="q q-tr">
+              <!-- Runlayer -->
+              <div class="cnode" style="left:14px;top:26px">
+                <div class="cnode-logo" style="width:38px;height:38px;background:var(--blue-bg);border-color:var(--blue-bd)">
+                  <svg width="24" height="24" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#2563EB"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">RL</text></svg>
+                </div>
+                <div class="cnode-lbl" style="color:var(--blue-dk)">Runlayer<br>$11M · US</div>
+              </div>
+              <!-- MintMCP -->
+              <div class="cnode" style="right:16px;bottom:24px">
+                <div class="cnode-logo" style="width:28px;height:28px">
+                  <svg width="20" height="20" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#10B981"/><text x="20" y="26" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="bold">M</text></svg>
+                </div>
+                <div class="cnode-lbl">MintMCP</div>
+              </div>
+            </div>
+            <!-- BL: Europe + Generalist (empty) -->
+            <div class="q q-bl">
+              <div class="q-label europe">EUROPE</div>
+            </div>
+            <!-- BR: Europe + MCP Specialist = MCPilot -->
+            <div class="q q-br">
+              <div class="hero-node" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+                <div class="hero-ring" style="width:80px;height:80px">
+                  <svg width="36" height="36" viewBox="0 0 24 28" fill="none">
+                    <path d="M12 1L2 5.5v8c0 6.3 4.3 12.1 10 13.5C17.7 25.6 22 19.8 22 13.5v-8L12 1z" stroke="#2563EB" stroke-width="1.5" fill="none"/>
+                    <path d="M8 14l3 3 5-6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="hero-lbl">MCPilot<br>EU · MCP native</div>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <div class="insight-blue"><div class="insight-blue-label">The insight in one sentence</div><div class="insight-blue-text">All MCP specialists are American. All European players are generalists. MCPilot is the only MCP-native platform built for Europe.</div></div>
-          <div class="comp-analysis">
-            <div class="comp-row direct"><div class="comp-row-head"><span class="comp-row-name">Runlayer</span><span class="badge red">Direct competitor</span></div><div class="comp-row-body">Best MCP player today — but US-first. Logs transit through American clouds. Structurally incompatible with GDPR and EU data sovereignty.</div></div>
-            <div class="comp-row adjacent"><div class="comp-row-head"><span class="comp-row-name">Kong · Datadog · Cloudflare</span><span class="badge amber">Adjacent</span></div><div class="comp-row-body">Generalists adding MCP as a feature. MCP is not their core business — they will never build as fine-grained an experience as a dedicated product.</div></div>
-            <div class="comp-row future"><div class="comp-row-head"><span class="comp-row-name">Future EU competitors</span><span class="badge gray">Future risk</span></div><div class="comp-row-body">Someone will build this in Europe. The question is who gets there first. Our 12-18 month head start + retail case studies create a hard-to-close gap.</div></div>
+        <!-- Y axis labels outside -->
+        <div style="display:flex;justify-content:space-between;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);margin-top:4px;padding:0 2px">
+          <span style="color:var(--blue)">EUROPE ↑</span>
+          <span>GLOBAL ↓</span>
+        </div>
+      </div>
+
+      <!-- ANALYSIS -->
+      <div>
+        <div class="insight-box"><div class="ibl">The insight in one sentence</div><div class="ibt">All MCP specialists are American. All European players are generalists. MCPilot is the only MCP-native platform built for Europe.</div></div>
+        <div class="crow direct"><div class="crhead"><span class="crname">Runlayer</span><span class="badge red">Direct competitor</span></div><div class="crbody">Best MCP player today — but US-first. Logs transit through American clouds. Structurally incompatible with GDPR and EU data sovereignty.</div></div>
+        <div class="crow adj"><div class="crhead"><span class="crname">Kong · Datadog · Cloudflare</span><span class="badge amber">Adjacent</span></div><div class="crbody">Generalists adding MCP as a feature. MCP is not their core business — they will never build as fine-grained an experience as a dedicated product.</div></div>
+        <div class="crow fut"><div class="crhead"><span class="crname">Future EU competitors</span><span class="badge gray">Future risk</span></div><div class="crbody">Someone will build this in Europe. The question is who gets there first. Our 12-18 month head start + retail case studies create a hard-to-close gap.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S9: ARCHITECTURE -->
+  <div class="slide" id="s9">
+    <div class="slbl">08 — Architecture</div>
+    <div class="stitle">An architecture designed to <span>never see your data</span></div>
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="alayer"><div class="albar" style="background:var(--blue)"></div><div class="anum" style="background:var(--blue)">1</div><div><div class="altl">Collection — closest to the flow</div><div class="albd">Lightweight proxy or SDK wrapper intercepts each MCP call. Extracts metadata only: timestamp, agent ID, tool called, duration, return code.</div><div class="tagrow"><span class="tag">SDK Python/TS</span><span class="tag">Kubernetes sidecar</span><span class="tag">Reverse proxy</span></div></div></div>
+        <div class="alayer"><div class="albar" style="background:var(--orange)"></div><div class="anum" style="background:var(--orange)">2</div><div><div class="altl">Pipeline — real-time processing</div><div class="albd">Anonymization and enrichment before storage. Real-time anomaly detection via rules + lightweight ML model trained on MCP patterns.</div><div class="tagrow"><span class="tag">OpenTelemetry</span><span class="tag">Kafka / streaming</span><span class="tag">Rules + ML</span></div></div></div>
+        <div class="alayer"><div class="albar" style="background:var(--purple)"></div><div class="anum" style="background:var(--purple)">3</div><div><div class="altl">Storage — metadata only</div><div class="albd">Time-series for real-time metrics. Columnar storage for audit queries and long-term history. Configurable retention per client.</div><div class="tagrow"><span class="tag">ClickHouse</span><span class="tag">TimescaleDB</span><span class="tag">Encryption at-rest</span></div></div></div>
+        <div class="alayer"><div class="albar" style="background:var(--green)"></div><div class="anum" style="background:var(--green)">4</div><div><div class="altl">Exposure — dashboard + integrations</div><div class="albd">REST API for SIEMs (Splunk, Sentinel). Webhooks for alerts. PDF/CSV export for regulatory audit reports.</div><div class="tagrow"><span class="tag">REST API</span><span class="tag">Webhooks</span><span class="tag">Audit export</span></div></div></div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;margin-bottom:10px">Two deployment modes</div>
+        <div class="dcloud"><div class="dctitle">Cloud managed <span style="font-size:9px">80% of clients</span></div><div style="font-size:10px;color:var(--blue-dk);line-height:1.5;margin-bottom:3px">AWS eu-west-3 (Paris) · data never leaves the EU<br>SOC2 Type II in progress · 1-hour installation</div><div style="font-size:9px;color:var(--blue);font-style:italic">Enterprise, retail, tech — standard case</div></div>
+        <div class="dprem"><div style="font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:4px">On-premise <span style="font-size:9px;color:var(--t3)">Regulated enterprises</span></div><div style="font-size:10px;color:var(--t2);line-height:1.5;margin-bottom:3px">Helm chart Kubernetes · zero external data<br>Air-gapped possible · for banks, insurers, public sector</div><div style="font-size:9px;color:var(--t3);font-style:italic">Finance, healthcare, defence — Enterprise plan</div></div>
+        <div class="compd"><div class="cdttl">Compliance by design — not by accident</div><div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>Data minimization</strong>Metadata only — payload content never stored</div></div><div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>End-to-end encryption</strong>TLS 1.3 in transit · AES-256 at rest</div></div><div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>Data residency</strong>AWS Paris · no EU data transfer · contractual SLA</div></div><div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>SOC2 Type II · HDS</strong>In progress — Year 1 priority</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S10: TEAM — symmetric cards -->
+  <div class="slide" id="s10">
+    <div class="slbl">09 — Team</div>
+    <div class="stitle">Founder — and the <span>CTO seat to fill</span></div>
+    <div class="team-grid">
+
+      <!-- Sophie — white card, blue accent -->
+      <div class="person-card sc-sophie">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div class="person-avatar" style="background:var(--blue-bg);border:2px solid var(--blue-bd);color:var(--blue)">S</div>
+          <div>
+            <div class="person-name" style="color:var(--text)">Sophie</div>
+            <div class="person-role" style="color:var(--blue);font-size:11px">CEO &amp; Co-founder</div>
           </div>
+        </div>
+        <div class="pxp-item"><div class="pxp-co" style="color:var(--blue)">QSRP</div><div><div class="pxp-role">Head of AI</div><div class="pxp-detail">Deployed AI agents in production — experienced the MCP problem first-hand</div></div></div>
+        <div class="pxp-item"><div class="pxp-co" style="color:var(--blue)">Etam Group</div><div><div class="pxp-role">Director Data, AI &amp; CRM</div><div class="pxp-detail">Full data stack transformation · 40-person team managed</div></div></div>
+        <div class="pxp-item"><div class="pxp-co" style="color:var(--blue)">LVMH</div><div><div class="pxp-role">Head of Data &amp; AI Strategy</div><div class="pxp-detail">Group strategy · EMEA scope</div></div></div>
+        <div class="pxp-item"><div class="pxp-co" style="color:var(--blue)">Artefact</div><div><div class="pxp-role">Partner</div><div class="pxp-detail">6 years · P&amp;L &gt;€3M · US office opening · EMEA CIO/CDO network</div></div></div>
+      </div>
+
+      <!-- CTO — white card, dashed border -->
+      <div class="person-card sc-cto">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div class="person-avatar" style="background:var(--s2);border:1.5px dashed var(--border2);color:var(--border2);font-size:22px">?</div>
+          <div>
+            <div class="person-name" style="color:var(--t2)">CTO Co-founder</div>
+            <div class="person-role" style="color:var(--orange);font-size:11px;font-weight:600">Open seat</div>
+          </div>
+        </div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px">Ideal profile</div>
+        <div class="cto-li"><div class="cto-dot"></div>Python / TypeScript expert</div>
+        <div class="cto-li"><div class="cto-dot"></div>Distributed systems background</div>
+        <div class="cto-li"><div class="cto-dot"></div>MCP ecosystem contributor (ideal)</div>
+        <div class="cto-li"><div class="cto-dot"></div>Early-stage startup experience</div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+          <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px">Where to look</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.7">Official MCP Discord · GitHub contributors<br>Paris AI meetups · Artefact network</div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- S9: ARCHITECTURE -->
-    <div class="slide" id="s9">
-      <div class="sec-label">08 — Architecture</div>
-      <div class="sec-title">An architecture designed to <span>never see your data</span></div>
-      <div class="g2">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div class="arch-layer"><div class="layer-bar" style="background:var(--blue)"></div><div class="layer-num-circle" style="background:var(--blue)">1</div><div><div class="layer-ttl">Collection — closest to the flow</div><div class="layer-bdy">Lightweight proxy or SDK wrapper intercepts each MCP call. Extracts metadata only: timestamp, agent ID, tool called, duration, return code.</div><div class="tag-row"><span class="tag">SDK Python/TS</span><span class="tag">Kubernetes sidecar</span><span class="tag">Reverse proxy</span></div></div></div>
-          <div class="arch-layer"><div class="layer-bar" style="background:var(--orange)"></div><div class="layer-num-circle" style="background:var(--orange)">2</div><div><div class="layer-ttl">Pipeline — real-time processing</div><div class="layer-bdy">Anonymization and enrichment before storage. Real-time anomaly detection via rules + lightweight ML model trained on MCP patterns.</div><div class="tag-row"><span class="tag">OpenTelemetry</span><span class="tag">Kafka / streaming</span><span class="tag">Rules + ML</span></div></div></div>
-          <div class="arch-layer"><div class="layer-bar" style="background:var(--purple)"></div><div class="layer-num-circle" style="background:var(--purple)">3</div><div><div class="layer-ttl">Storage — metadata only</div><div class="layer-bdy">Time-series for real-time metrics. Columnar storage for audit queries and long-term history. Configurable retention per client.</div><div class="tag-row"><span class="tag">ClickHouse</span><span class="tag">TimescaleDB</span><span class="tag">Encryption at-rest</span></div></div></div>
-          <div class="arch-layer"><div class="layer-bar" style="background:var(--green)"></div><div class="layer-num-circle" style="background:var(--green)">4</div><div><div class="layer-ttl">Exposure — dashboard + integrations</div><div class="layer-bdy">REST API for SIEMs (Splunk, Sentinel). Webhooks for alerts. PDF/CSV export for regulatory audit reports.</div><div class="tag-row"><span class="tag">REST API</span><span class="tag">Webhooks</span><span class="tag">Audit export</span></div></div></div>
-        </div>
-        <div>
-          <div style="font-size:11px;font-weight:600;margin-bottom:10px">Two deployment modes</div>
-          <div class="deploy-cloud"><div class="deploy-cloud-title">Cloud managed <span style="font-size:9px">80% of clients</span></div><div class="deploy-cloud-body">AWS eu-west-3 (Paris) · data never leaves the EU<br>SOC2 Type II in progress · 1-hour installation</div><div class="deploy-cloud-note">Enterprise, retail, tech — standard case</div></div>
-          <div class="deploy-premise"><div class="deploy-premise-title">On-premise <span style="font-size:9px;color:var(--text3)">Regulated enterprises</span></div><div style="font-size:10px;color:var(--text2);line-height:1.5;margin-bottom:3px">Helm chart Kubernetes · zero external data<br>Air-gapped possible · for banks, insurers, public sector</div><div style="font-size:9px;color:var(--text3);font-style:italic">Finance, healthcare, defence — Enterprise plan</div></div>
-          <div class="compliance-dark">
-            <div class="comp-dark-ttl">Compliance by design — not by accident</div>
-            <div class="comp-dark-item"><span class="check-icon">✓</span><div class="comp-dark-text"><strong>Data minimization</strong>Metadata only — payload content never stored</div></div>
-            <div class="comp-dark-item"><span class="check-icon">✓</span><div class="comp-dark-text"><strong>End-to-end encryption</strong>TLS 1.3 in transit · AES-256 at rest</div></div>
-            <div class="comp-dark-item"><span class="check-icon">✓</span><div class="comp-dark-text"><strong>Data residency</strong>AWS Paris · no EU data transfer · contractual SLA</div></div>
-            <div class="comp-dark-item"><span class="check-icon">✓</span><div class="comp-dark-text"><strong>SOC2 Type II · HDS</strong>In progress — Year 1 priority</div></div>
+  <!-- S11: ASK -->
+  <div class="slide" id="s11">
+    <div class="slbl">10 — The Ask</div>
+    <div class="ask-grid">
+      <div class="ask-left">
+        <div class="ask-amt">€1,000,000</div>
+        <div class="ask-sub">Seed round · 18 months runway</div>
+        <div class="aslbl">Allocation</div>
+        <div id="ar"></div>
+        <!-- CONTACT -->
+        <div class="cct">
+          <div class="cctit">Get in touch</div>
+          <div class="ccrow">
+            <div class="ccicon">✉</div>
+            <div><div class="cclbl">Email</div><div class="ccval"><a href="mailto:sophie.buresi@gmail.com">sophie.buresi@gmail.com</a></div></div>
+          </div>
+          <div class="ccrow">
+            <div class="ccicon" style="font-size:11px;font-weight:700;color:var(--blue)">in</div>
+            <div><div class="cclbl">LinkedIn</div><div class="ccval"><a href="https://www.linkedin.com/in/sophieburesigallay" target="_blank">Sophie Buresi-Gallay</a></div></div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- S10: TEAM -->
-    <div class="slide" id="s10">
-      <div class="sec-label">09 — Team</div>
-      <div class="sec-title">Founder — and the <span>CTO seat to fill</span></div>
-      <div class="g2">
-        <div class="sophie-card">
-          <div class="sophie-accent"></div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-left:8px">
-            <div class="avatar-circle">S</div>
-            <div><div class="sophie-name">Sophie</div><div class="sophie-role">CEO &amp; Co-founder</div></div>
-          </div>
-          <div style="padding-left:8px">
-            <div class="xp-item"><div class="xp-co">QSRP</div><div><div class="xp-role-txt">Head of AI</div><div class="xp-detail">Deployed AI agents in production — experienced the MCP problem first-hand</div></div></div>
-            <div class="xp-item"><div class="xp-co">Etam Group</div><div><div class="xp-role-txt">Director Data, AI &amp; CRM</div><div class="xp-detail">Full data stack transformation · 40-person team managed</div></div></div>
-            <div class="xp-item"><div class="xp-co">LVMH</div><div><div class="xp-role-txt">Head of Data &amp; AI Strategy</div><div class="xp-detail">Group strategy · EMEA scope</div></div></div>
-            <div class="xp-item"><div class="xp-co">Artefact</div><div><div class="xp-role-txt">Partner</div><div class="xp-detail">6 years · P&amp;L &gt;€3M · US office opening · EMEA CIO/CDO network</div></div></div>
-          </div>
-        </div>
-        <div class="cto-card">
-          <div class="cto-avatar">?</div>
-          <div class="cto-name">CTO Co-founder</div>
-          <div class="open-lbl">Open seat</div>
-          <div class="profile-section-label">Ideal profile</div>
-          <div class="profile-li"><div class="profile-li-dot"></div>Python / TypeScript expert</div>
-          <div class="profile-li"><div class="profile-li-dot"></div>Distributed systems background</div>
-          <div class="profile-li"><div class="profile-li-dot"></div>MCP ecosystem contributor (ideal)</div>
-          <div class="profile-li"><div class="profile-li-dot"></div>Early-stage startup experience</div>
-          <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
-            <div class="profile-section-label">Where to look</div>
-            <div style="font-size:11px;color:var(--text2);line-height:1.7">Official MCP Discord · GitHub contributors<br>Paris AI meetups · Artefact network</div>
-          </div>
-        </div>
+      <div class="ask-right">
+        <div class="mslbl">18-month milestones</div>
+        <div id="mr"></div>
+        <div class="vclbl">Target VCs</div>
+        <div class="vcrow"><span class="vcchip">Kima Ventures</span><span class="vcchip">ISAI</span><span class="vcchip">Elaia</span><span class="vcchip">Fly Ventures</span></div>
       </div>
     </div>
+  </div>
 
-    <!-- S11: ASK -->
-    <div class="slide" id="s11">
-      <div class="sec-label">10 — The Ask</div>
-      <div class="ask-wrap">
-        <div class="ask-left">
-          <div class="ask-amount">€1,000,000</div>
-          <div class="ask-sub">Seed round · 18 months runway</div>
-          <div class="alloc-section-label">Allocation</div>
-          <div id="allocRows"></div>
-          <div class="contact-card">
-            <div class="contact-title">Get in touch</div>
-            <div class="contact-row">
-              <div class="contact-icon">✉</div>
-              <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:sophie.buresi@gmail.com">sophie@mcpilot.io</a></div></div>
-            </div>
-            <div class="contact-row">
-              <div class="contact-icon">in</div>
-              <div><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://linkedin.com/in/sophieburesigallay" target="_blank">linkedin.com/in/sophieburesi</a></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="ask-right">
-          <div class="ms-section-label">18-month milestones</div>
-          <div id="msRows"></div>
-          <div class="vcs-label">Target VCs</div>
-          <div class="vcs-row">
-            <span class="vc-chip">Kima Ventures</span>
-            <span class="vc-chip">ISAI</span>
-            <span class="vc-chip">Elaia</span>
-            <span class="vc-chip">Fly Ventures</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /slides-wrap -->
-  <div class="dots" id="dotsRow"></div>
+  </div><!-- /swrap -->
+  <div class="dots" id="dr"></div>
 </div>
 
 <script>
 // ── PASSWORD ──
-// Change 'mcpilot2025' to whatever you want
-const PASSWORD = 'mcpilot2025';
-
-function checkPw() {
-  const val = document.getElementById('pwInput').value;
-  if (val === PASSWORD) {
-    document.getElementById('lockscreen').style.display = 'none';
-    document.getElementById('deck').style.display = 'flex';
-    // Track access in Plausible
-    if(window.plausible) window.plausible('Deck accessed');
-  } else {
-    const err = document.getElementById('pwError');
-    err.textContent = 'Incorrect password.';
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwInput').focus();
-    setTimeout(()=>err.textContent='', 3000);
-  }
+const PW = 'mcpilot2025';
+function chkpw(){
+  const v=document.getElementById('pwi').value;
+  if(v===PW){document.getElementById('lock').style.display='none';document.getElementById('deck').style.display='flex';if(window.plausible)window.plausible('Deck accessed');}
+  else{const e=document.getElementById('pwe');e.textContent='Incorrect password.';document.getElementById('pwi').value='';document.getElementById('pwi').focus();setTimeout(()=>e.textContent='',3000);}
 }
-document.getElementById('pwInput').addEventListener('keydown', e => {
-  if(e.key === 'Enter') checkPw();
-});
+document.getElementById('pwi').addEventListener('keydown',e=>{if(e.key==='Enter')chkpw();});
 
 // ── SLIDES ──
-const N = 11;
-let cur = 0;
+const N=11; let cur=0;
 
-const alloc = [
-  {n:'CTO co-founder (18 months)', p:35, c:'#2563EB'},
-  {n:'CEO salary (18 months)', p:7.5, c:'#059669'},
-  {n:'Safety reserve', p:17, c:'#7C3AED'},
-  {n:'First commercial hire (M9)', p:15.5, c:'#D97706'},
-  {n:'Legal · GDPR · SOC2', p:8, c:'#EA580C'},
-  {n:'Marketing · events', p:9, c:'#2563EB'},
-  {n:'Infrastructure · tooling', p:8, c:'#8C857A'},
+const alloc=[
+  {n:'CTO co-founder (18 months)',p:35,c:'#2563EB'},
+  {n:'CEO salary (18 months)',p:7.5,c:'#059669'},
+  {n:'Safety reserve',p:17,c:'#7C3AED'},
+  {n:'First commercial hire (M9)',p:15.5,c:'#D97706'},
+  {n:'Legal · GDPR · SOC2',p:8,c:'#EA580C'},
+  {n:'Marketing · events',p:9,c:'#2563EB'},
+  {n:'Infrastructure · tooling',p:8,c:'#8C857A'},
 ];
-const ms = [
-  {m:'M3', t:'CTO on board · MVP v0', s:'MCP proxy + dashboard · first client tests', c:'#2563EB'},
-  {m:'M6', t:'5 pilots signed · €50k ARR', s:'Retail PMF validated · 2 via direct network', c:'#EA580C'},
-  {m:'M9', t:'First commercial · SOC2 live', s:'Pipeline scaling · certifications started', c:'#D97706'},
-  {m:'M18', t:'€600k ARR · Series A ready', s:'50 clients · NRR >110% · €2M pipeline', c:'#059669'},
+const msd=[
+  {m:'M3',t:'CTO on board · MVP v0',s:'MCP proxy + dashboard · first client tests',c:'#2563EB'},
+  {m:'M6',t:'5 pilots signed · €50k ARR',s:'Retail PMF validated · 2 via direct network',c:'#EA580C'},
+  {m:'M9',t:'First commercial · SOC2 live',s:'Pipeline scaling · certifications started',c:'#D97706'},
+  {m:'M18',t:'€600k ARR · Series A ready',s:'50 clients · NRR >110% · €2M pipeline',c:'#059669'},
 ];
 
-document.getElementById('allocRows').innerHTML = alloc.map(a => {
-  const k = Math.round(a.p/100*1000);
-  return `<div class="alloc-row">
-    <div class="alloc-name">${a.n}</div>
-    <div class="alloc-track"><div class="alloc-fill" style="width:${Math.round(a.p/35*100)}%;background:${a.c}"></div></div>
-    <div class="alloc-val" style="color:${a.c}">${k}k€</div>
-  </div>`;
-}).join('');
+document.getElementById('ar').innerHTML=alloc.map(a=>`<div class="arow"><div class="aname">${a.n}</div><div class="atrack"><div class="afill" style="width:${Math.round(a.p/35*100)}%;background:${a.c}"></div></div><div class="aval" style="color:${a.c}">${Math.round(a.p/100*1000)}k€</div></div>`).join('');
+document.getElementById('mr').innerHTML=msd.map(m=>`<div class="mscard"><div class="msbar" style="background:${m.c}"></div><div class="msco"><div class="mstag" style="color:${m.c}">${m.m}</div><div class="mstit">${m.t}</div><div class="mssub">${m.s}</div></div></div>`).join('');
+document.getElementById('dr').innerHTML=Array.from({length:N},(_,i)=>`<button class="dot${i===0?' active':''}" onclick="jump(${i})"></button>`).join('');
 
-document.getElementById('msRows').innerHTML = ms.map(m => `
-  <div class="ms-card">
-    <div class="ms-bar" style="background:${m.c}"></div>
-    <div class="ms-content">
-      <div class="ms-tag" style="color:${m.c}">${m.m}</div>
-      <div class="ms-title">${m.t}</div>
-      <div class="ms-sub">${m.s}</div>
-    </div>
-  </div>`).join('');
-
-(function buildDots(){
-  document.getElementById('dotsRow').innerHTML = Array.from({length:N},(_,i)=>
-    `<button class="dot${i===0?' active':''}" onclick="jump(${i})"></button>`).join('');
-})();
-
-function upd() {
+function upd(){
   document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===cur));
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-  document.getElementById('navCount').textContent = `${cur+1} / ${N}`;
-  document.getElementById('prog').style.width = `${((cur+1)/N*100).toFixed(1)}%`;
+  document.getElementById('nc').textContent=`${cur+1} / ${N}`;
+  document.getElementById('pf').style.width=`${((cur+1)/N*100).toFixed(1)}%`;
   document.querySelectorAll('.slide.active').forEach(s=>s.scrollTop=0);
-  // Plausible: track slide views
-  if(window.plausible) window.plausible('Slide viewed', {props:{slide: cur+1}});
+  if(window.plausible)window.plausible('Slide viewed',{props:{slide:cur+1}});
 }
-function go(d) { cur = Math.max(0, Math.min(N-1, cur+d)); upd(); }
-function jump(i) { cur = i; upd(); }
+function go(d){cur=Math.max(0,Math.min(N-1,cur+d));upd();}
+function jump(i){cur=i;upd();}
 
 // ── KEYBOARD ──
-document.addEventListener('keydown', e => {
-  if(['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(1); }
-  if(['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); go(-1); }
-  if(e.key === 'Escape') { if(document.fullscreenElement) document.exitFullscreen(); }
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();go(1);}
+  if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();go(-1);}
+  if(e.key==='Escape'&&document.fullscreenElement)document.exitFullscreen();
 });
+
+// ── SCROLL (trackpad/wheel) ──
+let scrollLock=false;
+document.getElementById('swrap').addEventListener('wheel',e=>{
+  // Only navigate if the active slide isn't scrollable OR is at the top/bottom
+  const active=document.querySelector('.slide.active');
+  const atTop=active.scrollTop===0;
+  const atBot=active.scrollTop+active.clientHeight>=active.scrollHeight-2;
+  if(scrollLock)return;
+  if(e.deltaY>30&&atBot){scrollLock=true;go(1);setTimeout(()=>scrollLock=false,600);}
+  else if(e.deltaY<-30&&atTop){scrollLock=true;go(-1);setTimeout(()=>scrollLock=false,600);}
+},{passive:true});
 
 // ── TOUCH / SWIPE ──
-let tx = 0;
-document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
-document.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - tx;
-  if(Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-}, {passive:true});
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  const dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40)go(dx<0?1:-1);
+},{passive:true});
 
 // ── FULLSCREEN ──
-function toggleFS() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(()=>{});
-    document.getElementById('fsBtn').textContent = '✕';
-  } else {
-    document.exitFullscreen();
-    document.getElementById('fsBtn').textContent = '⛶';
-  }
+function tgFS(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});document.getElementById('fsb').textContent='✕';}
+  else{document.exitFullscreen();document.getElementById('fsb').textContent='⛶';}
 }
-document.addEventListener('fullscreenchange', () => {
-  if(!document.fullscreenElement) document.getElementById('fsBtn').textContent = '⛶';
-});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.getElementById('fsb').textContent='⛶';});
 </script>
 </body>
 </html>

@@ -357,7 +357,7 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
     <div class="tnav">
       <button class="btn" onclick="go(-1)">←</button>
-      <span class="scount" id="nc">1 / 11</span>
+      <span class="scount" id="nc">1 / 12</span>
       <button class="btn" onclick="go(1)">→</button>
       <button class="btn ib" id="fsb" onclick="tgFS()" title="Fullscreen">⛶</button>
     </div>
@@ -440,10 +440,10 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
-  <!-- S5: PRODUCT -->
+  <!-- S5: PRODUCT DASHBOARD -->
   <div class="slide" id="s5">
     <div class="slbl">04 — Product</div>
-    <div class="stitle" style="margin-bottom:10px">Dashboard MCPilot — <span>total control in real time</span></div>
+    <div class="stitle" style="margin-bottom:10px">MCPilot dashboard — <span>AXA France in production</span></div>
     <div class="dwrap">
       <div class="dtop">
         <span style="color:var(--t2)">MCPilot · AXA France — Production · 13 March 2026  14:32</span>
@@ -455,8 +455,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
           <div class="dnav">Agents IA</div>
           <div class="dnav">Serveurs MCP</div>
           <div class="dnav al">Alertes  3</div>
+          <div class="dnav" style="color:var(--red);font-weight:600">💥 Blast Radius</div>
+          <div class="dnav" style="color:#059669;font-weight:600">🐀 Remy</div>
           <div class="dnav">Compliance</div>
-          <div class="dnav">FinOps</div>
         </div>
         <div class="dmain">
           <div class="krow">
@@ -489,31 +490,128 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
               <div class="ssub">/ 100 · Conforme ✓</div>
               <div style="border-top:1px solid var(--border);width:100%;margin:7px 0"></div>
               <div style="width:100%;font-size:8px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Recent alerts</div>
-              <div style="width:100%;font-size:9px;line-height:1.9"><div><span style="color:var(--red)">●</span> Unusual Slack access · 4 min</div><div><span style="color:var(--orange)">●</span> Undeclared server · 23 min</div><div><span style="color:var(--amber)">●</span> Unusual data access · 1h</div></div>
+              <div style="width:100%;font-size:9px;line-height:1.9">
+                <div><span style="color:var(--red)">●</span> Unusual Slack access · 4 min</div>
+                <div><span style="color:var(--orange)">●</span> Undeclared server · 23 min</div>
+                <div><span style="color:var(--amber)">●</span> Agent Pricing drift · 1h</div>
+              </div>
             </div>
           </div>
           <div style="background:var(--s2);border-radius:6px;padding:7px">
             <div style="font-size:7px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Real-time activity</div>
-            <table class="atable"><tr><td class="at">14:32:08</td><td style="color:var(--t2)">Agent Commercial → Salesforce <code>get_opportunities</code></td><td><span class="tok">42ms</span></td></tr><tr><td class="at">14:31:54</td><td style="color:var(--t2)">Agent Compliance → Slack <code>list_channels</code></td><td><span class="tanom">Anomalie</span></td></tr><tr><td class="at">14:31:41</td><td style="color:var(--t2)">Agent Analytics → PostgreSQL <code>query_metrics</code></td><td><span class="tok">128ms</span></td></tr></table>
+            <table class="atable">
+              <tr><td class="at">14:32:08</td><td style="color:var(--t2)">Agent Commercial → Salesforce <code>get_opportunities</code></td><td><span class="tok">42ms</span></td></tr>
+              <tr><td class="at">14:31:54</td><td style="color:var(--t2)">Agent Pricing → SAP <code>list_employees</code> <span style="color:var(--amber);font-size:8px">drift ⚠</span></td><td><span class="tanom">Drift</span></td></tr>
+              <tr><td class="at">14:31:41</td><td style="color:var(--t2)">Agent Analytics → PostgreSQL <code>query_metrics</code></td><td><span class="tok">128ms</span></td></tr>
+            </table>
           </div>
         </div>
       </div>
     </div>
     <div class="card" style="margin-top:10px">
       <div class="brow"><div class="bbar" style="background:var(--blue)"></div><div class="btxt"><strong>47 agents in production, mapped in real time</strong>Including 8 previously undeclared — detected automatically on first connection</div></div>
-      <div class="brow"><div class="bbar" style="background:var(--orange)"></div><div class="btxt"><strong>Anomaly detected at 14:31</strong>Agent Compliance accessing Slack via undeclared server — flagged before any data exfiltration</div></div>
-      <div class="brow"><div class="bbar" style="background:var(--green)"></div><div class="btxt"><strong>Compliance score 87/100</strong>Exportable in 1 click for EU AI Act audit — no manual preparation required</div></div>
+      <div class="brow"><div class="bbar" style="background:var(--orange)"></div><div class="btxt"><strong>Agent Pricing: intent drift detected at 14:31</strong>Called list_employees — a tool never used before. Flagged for human approval before next execution.</div></div>
+      <div class="brow"><div class="bbar" style="background:var(--green)"></div><div class="btxt"><strong>Compliance score 87/100 · EU AI Act Annex IV ready</strong>Full audit dossier exportable in 1 click — no manual preparation required</div></div>
     </div>
   </div>
 
-  <!-- S6: BUSINESS MODEL -->
+  <!-- S6: MCPILOT-SPECIFIC FEATURES -->
   <div class="slide" id="s6">
-    <div class="slbl">05 — Business Model</div>
+    <div class="slbl">05 — Features unique to MCPilot</div>
+    <div class="stitle" style="margin-bottom:6px">"Dynatrace tells you <span>what happened.</span> MCPilot tells you what can happen."</div>
+    <div style="font-size:11px;color:var(--t2);margin-bottom:16px">Three capabilities no competitor can replicate — built on MCP-native architecture, not retrofitted APM.</div>
+    <div class="g3" style="margin-bottom:14px">
+      <div style="background:#fff;border:1.5px solid var(--red-bd);border-radius:12px;padding:16px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:30px;height:30px;border-radius:8px;background:var(--red-bg);display:flex;align-items:center;justify-content:center;font-size:15px">💥</div>
+          <div><div style="font-size:13px;font-weight:700">Blast Radius</div><div style="font-size:9px;color:var(--red);font-weight:600">Pro · unique to MCPilot</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--t2);line-height:1.6;margin-bottom:12px">Before any incident, MCPilot simulates what a compromised or misconfigured agent <em>could</em> do — and how far it can propagate across your SI.</div>
+        <div style="background:var(--s2);border-radius:8px;padding:10px;font-family:monospace;font-size:9px">
+          <div style="color:var(--t3);margin-bottom:5px;font-family:sans-serif;font-weight:600">Agent Pricing · Blast Radius report</div>
+          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border)"><span style="color:var(--t2)">Data reachable</span><span style="color:var(--red);font-weight:700">2.3M records</span></div>
+          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border)"><span style="color:var(--t2)">Actions possible</span><span style="color:var(--red);font-weight:700">mass price edit</span></div>
+          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border)"><span style="color:var(--t2)">Propagation via SAP</span><span style="color:var(--amber);font-weight:700">payroll access</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;margin-top:2px"><span style="font-weight:700;color:var(--text);font-family:sans-serif">Risk score</span><span style="font-weight:700;color:var(--red)">8.4 / 10 ⚠ HIGH</span></div>
+        </div>
+        <div style="margin-top:10px;padding:7px;background:var(--red-bg);border-radius:6px;font-size:9px;color:var(--red)">Requires MCP knowledge graph — 18+ months to build. Dynatrace cannot copy this with a sprint.</div>
+      </div>
+      <div style="background:#fff;border:1.5px solid var(--amb-bd);border-radius:12px;padding:16px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber)"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:30px;height:30px;border-radius:8px;background:var(--amb-bg);display:flex;align-items:center;justify-content:center;font-size:15px">🧭</div>
+          <div><div style="font-size:13px;font-weight:700">Authorization Drift</div><div style="font-size:9px;color:var(--amber);font-weight:600">Pro · intent-level detection</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--t2);line-height:1.6;margin-bottom:12px">MCPilot learns each agent's behavioral signature at deployment. Any deviation — even if technically "normal" ops — triggers an intent drift alert before damage occurs.</div>
+        <div style="background:var(--s2);border-radius:8px;padding:10px">
+          <div style="font-size:8px;color:var(--t3);margin-bottom:8px;font-family:sans-serif;font-weight:600">Agent Pricing · behavioral baseline</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0"></div><span style="font-size:9px;color:var(--t2);font-family:sans-serif">get_price · update_catalog <span style="color:var(--green);font-weight:600">✓ baseline</span></span></div>
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0"></div><span style="font-size:9px;color:var(--t2);font-family:sans-serif">get_price · update_catalog <span style="color:var(--green);font-weight:600">✓ baseline</span></span></div>
+            <div style="display:flex;align-items:center;gap:6px;background:#FFF7ED;border-radius:5px;padding:4px 6px;border:1px solid var(--org-bd)"><div style="width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0"></div><span style="font-size:9px;color:var(--amber);font-family:sans-serif;font-weight:700">list_employees — never seen before ⚠ DRIFT</span></div>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:7px;background:var(--amb-bg);border-radius:6px;font-size:9px;color:var(--amber)">Detects intent change, not just performance degradation. Kong and Datadog only see the second.</div>
+      </div>
+      <div style="background:#F0FDF4;border:1.5px solid #A7F3D0;border-radius:12px;padding:16px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#059669"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:30px;height:30px;border-radius:50%;background:#059669;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff">R</div>
+          <div><div style="font-size:13px;font-weight:700">Remy — Minimal Permissions</div><div style="font-size:9px;color:#059669;font-weight:600">Pro · Roadmap M6</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--t2);line-height:1.6;margin-bottom:12px">After 30 days of observation, Remy maps what each agent <em>actually</em> uses vs what it has access to — and recommends the minimal permission set.</div>
+        <div style="background:#fff;border:1px solid #A7F3D0;border-radius:8px;padding:10px">
+          <div style="font-size:8px;color:var(--t3);margin-bottom:8px;font-family:sans-serif;font-weight:600">Agent Pricing · SAP permission audit</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+            <span style="font-size:9px;color:var(--t2)">Granted access</span><span style="font-size:12px;font-weight:700;color:var(--red)">12 tools</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:9px;color:var(--t2)">Actually used (30d)</span><span style="font-size:12px;font-weight:700;color:#059669">3 tools</span>
+          </div>
+          <div style="background:#DCFCE7;border-radius:5px;padding:5px 8px;font-size:9px;font-weight:700;color:#059669">→ Blast Radius ↓ 73% if restricted to 3</div>
+        </div>
+        <div style="margin-top:10px;padding:7px;background:#DCFCE7;border-radius:6px;font-size:9px;color:#059669">Least privilege automation for MCP — nobody does this today.</div>
+      </div>
+    </div>
+    <div style="background:#1A1612;border-radius:10px;padding:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <div style="width:32px;height:32px;border-radius:8px;background:#2A2520;display:flex;align-items:center;justify-content:center;font-size:16px">⚡</div>
+        <div><div style="font-size:12px;font-weight:700;color:#F5F0EA">Active Response</div><div style="font-size:9px;color:#6EE7B7">Enterprise · not just alerts — action</div></div>
+      </div>
+      <div style="flex:1;font-size:10px;color:#A0978E;line-height:1.5;min-width:180px">Quarantine a rogue agent, revoke MCP permissions, trigger a human-approval workflow — all from the dashboard. The only MCP platform that closes the loop.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#2A2520;color:#6EE7B7;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:600">Quarantine agent</span>
+        <span style="background:#2A2520;color:#6EE7B7;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:600">Revoke permissions</span>
+        <span style="background:#2A2520;color:#6EE7B7;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:600">Human approval flow</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- S7: BUSINESS MODEL -->
+  <div class="slide" id="s6">
+    <div class="slbl">06 — Business Model</div>
     <div class="stitle">Per MCP server — <span>predictable, expansive, non-optional</span></div>
     <div class="twrap">
       <div class="tier s"><div class="tnm">STARTER</div><div class="tpr">Free</div><div class="tnt">forever</div><div class="tu">Up to 3 MCP servers</div><hr class="tline"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Flow cartography</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Real-time dashboard</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Basic alerts</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>EU AI Act compliance</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>Audit reports</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>SSO / Identity</div><div class="ft on" style="color:#6B7280;font-size:9px"><div class="fd" style="background:#D1D5DB"></div>🐀 Remy — 3 scans/month</div><div class="tcta" style="background:var(--s2);color:var(--t2);border:1px solid var(--border)">Acquisition · Bottom-up</div></div>
-      <div class="tier p"><div class="tbadge">Core target</div><div class="tnm" style="color:var(--blue)">PRO</div><div class="tpr">€790</div><div class="tnt">/ server / year</div><div class="tu">From 4 MCP servers</div><hr class="tline" style="border-color:var(--blue-bd)"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Everything in Starter</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>AI anomaly detection</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div><div class="ft on"><div class="fd" style="background:var(--blue)"></div>SIEM integrations</div><div class="ft on" style="color:#059669"><div class="fd" style="background:#059669"></div>🐀 Remy — unlimited scans</div><div class="ft off"><div class="fd" style="background:var(--border2)"></div>On-premise deployment</div><div class="tex">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div></div>
-      <div class="tier e"><div class="tnm">ENTERPRISE</div><div class="tpr" style="font-size:22px">Custom</div><div class="tnt">30+ MCP servers</div><div class="tu">Regulated sectors</div><hr class="tline"><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Everything in Pro</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>On-premise deployment</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div><div class="ft on" style="color:#6EE7B7"><div class="fd" style="background:#6EE7B7"></div>🐀 Remy — CI/CD + white-label badge</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Dedicated CSM</div><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>CISO / CTO training</div><div class="tcta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div></div>
+      <div class="tier p"><div class="tbadge">Core target</div><div class="tnm" style="color:var(--blue)">PRO</div><div class="tpr">€790</div><div class="tnt">/ server / year</div><div class="tu">From 4 MCP servers</div><hr class="tline" style="border-color:var(--blue-bd)"><div class="ft on"><div class="fd" style="background:var(--blue)"></div>Everything in Starter</div>
+<div class="ft on"><div class="fd" style="background:var(--blue)"></div>EU AI Act · NIS2 compliance</div>
+<div class="ft on" style="color:var(--red)"><div class="fd" style="background:var(--red)"></div>💥 Blast Radius engine</div>
+<div class="ft on" style="color:var(--amber)"><div class="fd" style="background:var(--amber)"></div>🧭 Authorization Drift detection</div>
+<div class="ft on"><div class="fd" style="background:var(--blue)"></div>SSO integration (Okta, AAD)</div>
+<div class="ft on"><div class="fd" style="background:var(--blue)"></div>SIEM integrations</div>
+<div class="ft on" style="color:#059669"><div class="fd" style="background:#059669"></div>🐀 Remy — unlimited scans</div>
+<div class="ft off"><div class="fd" style="background:var(--border2)"></div>On-premise deployment</div>
+<div class="tex">Ex: 10 servers = €7,900/yr · ~60-day sales cycle</div></div>
+      <div class="tier e"><div class="tnm">ENTERPRISE</div><div class="tpr" style="font-size:22px">Custom</div><div class="tnt">30+ MCP servers</div><div class="tu">Regulated sectors</div><hr class="tline"><div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Everything in Pro</div>
+<div class="ft on"><div class="fd" style="background:#6EE7B7"></div>On-premise deployment</div>
+<div class="ft on"><div class="fd" style="background:#6EE7B7"></div>SLA 99.9% guaranteed</div>
+<div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Sovereign GDPR compliance</div>
+<div class="ft on" style="color:#6EE7B7"><div class="fd" style="background:#6EE7B7"></div>🔐 Minimal Permission Advisor</div>
+<div class="ft on" style="color:#6EE7B7"><div class="fd" style="background:#6EE7B7"></div>⚡ Active Response (quarantine, revoke)</div>
+<div class="ft on" style="color:#6EE7B7"><div class="fd" style="background:#6EE7B7"></div>🐀 Remy — CI/CD + white-label badge</div>
+<div class="ft on"><div class="fd" style="background:#6EE7B7"></div>Dedicated CSM + CISO training</div>
+<div class="tcta" style="background:#2A2520;color:#C4BFB5;border:1px solid #3A3530">Average ticket €40–80k/yr</div></div>
     </div>
     <div class="g2">
       <div class="surf"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Unit economics · Year 3</div><table style="width:100%;font-size:10px;border-collapse:collapse"><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Pro clients (avg. 12 servers)</td><td style="text-align:right;font-weight:600">380</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Enterprise clients</td><td style="text-align:right;font-weight:600">15</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Pro</td><td style="text-align:right;font-weight:600">€9,480</td></tr><tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 0;color:var(--t2)">Avg ACV Enterprise</td><td style="text-align:right;font-weight:600">€55,000</td></tr><tr><td style="padding:5px 0;font-weight:600;font-size:12px">ARR Year 3</td><td style="text-align:right;font-weight:700;font-size:13px;color:var(--green)">~€4.4M</td></tr></table></div>
@@ -521,10 +619,10 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
-  <!-- S7: GTM -->
+  <!-- S8: GTM -->
   <div class="slide" id="s7">
-    <div class="slbl">06 — Go-to-Market</div>
-    <div class="stitle">EU Retail beachhead — <span>3 phases, Artefact as launch pad</span></div>
+    <div class="slbl">07 — Go-to-Market</div>
+    <div class="stitle">EU Retail beachhead — <span>3 phases, 3 channels</span></div>
     <div class="g3" style="margin-bottom:10px">
       <div class="phase p1"><div class="pnr"><div class="pci" style="background:var(--blue)">1</div><span class="prng" style="color:var(--blue)">M0 → M6</span></div><div class="ptit">Beachhead</div><div class="chip" style="background:var(--blue-bg);color:var(--blue-dk);border:1px solid var(--blue-bd)">Artefact as first channel</div><div class="pli">Convert 2-3 Artefact AI practice leads into internal ambassadors</div><div class="pli">Offer MCPilot as "free MCP audit" to Artefact clients deploying agents</div><div class="pli">Target: 5 signed pilots, 3 documented case studies</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--blue)">5</div><div class="psl">pilot clients</div></div><div class="pstat"><div class="psn" style="color:var(--blue)">~€50k</div><div class="psl">Initial ARR</div></div></div></div>
       <div class="phase p2"><div class="pnr"><div class="pci" style="background:var(--orange)">2</div><span class="prng" style="color:var(--orange)">M6 → M18</span></div><div class="ptit">Scale</div><div class="chip" style="background:var(--org-bg);color:var(--orange);border:1px solid var(--org-bd)">Certified integrator network</div><div class="pli">Partner program: 5-8 SIs reselling MCPilot (Capgemini, Sopra, Devoteam…)</div><div class="pli">🐀 Remy v0 launch — quality badge on GitHub, viral developer-led growth</div><div class="pli">Thought leadership: EU AI Act whitepaper, CISO webinars</div><div class="pli">First commercial hire at M9 — outbound on regulated sectors</div><div class="pstats"><div class="pstat"><div class="psn" style="color:var(--orange)">50</div><div class="psl">active clients</div></div><div class="pstat"><div class="psn" style="color:var(--orange)">~€600k</div><div class="psl">ARR Year 1</div></div></div></div>
@@ -533,9 +631,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     <div class="astrip"><div style="font-size:10px;font-weight:600;margin-bottom:8px">Why Artefact is a launch pad, not just a network</div><div class="g3" style="gap:10px"><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Direct access to decision-makers</div><div style="font-size:10px;color:var(--t2)">Artefact consultants are already inside the COMEXs deploying AI agents</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Zero-cost evangelization</div><div style="font-size:10px;color:var(--t2)">A consultant recommending MCPilot = instant credibility, zero acquisition cost</div></div><div><div style="font-size:11px;font-weight:600;margin-bottom:3px">Reseller model possible</div><div style="font-size:10px;color:var(--t2)">Artefact bundles MCPilot into AI deployment offers — commission on each contract</div></div></div></div>
   </div>
 
-  <!-- S8: COMPETITION — improved map with logos -->
+  <!-- S9: COMPETITION — improved map with logos -->
   <div class="slide" id="s8">
-    <div class="slbl">07 — Competition</div>
+    <div class="slbl">08 — Competition</div>
     <div class="stitle">MCPilot <span>alone in its quadrant</span></div>
     <div class="comp-layout">
       <!-- MATRIX -->
@@ -608,9 +706,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
-  <!-- S9: ARCHITECTURE -->
+  <!-- S10: ARCHITECTURE -->
   <div class="slide" id="s9">
-    <div class="slbl">08 — Architecture</div>
+    <div class="slbl">09 — Architecture</div>
     <div class="stitle">An architecture designed to <span>never see your data</span></div>
     <div class="g2">
       <div style="display:flex;flex-direction:column;gap:8px">
@@ -628,9 +726,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
-  <!-- S10: TEAM — symmetric cards -->
+  <!-- S11: TEAM — symmetric cards -->
   <div class="slide" id="s10">
-    <div class="slbl">09 — Team</div>
+    <div class="slbl">10 — Team</div>
     <div class="stitle">Founder — and the <span>CTO seat to fill</span></div>
     <div class="team-grid">
 
@@ -671,9 +769,9 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
-  <!-- S11: ASK -->
+  <!-- S12: ASK -->
   <div class="slide" id="s11">
-    <div class="slbl">10 — The Ask</div>
+    <div class="slbl">11 — The Ask</div>
     <div class="ask-grid">
       <div class="ask-left">
         <div class="ask-amt">€1,000,000</div>
@@ -702,6 +800,118 @@ code{background:var(--s2);padding:0 3px;border-radius:2px;font-size:8px;font-fam
     </div>
   </div>
 
+  <!-- S13: ROADMAP -->
+  <div class="slide" id="s12">
+    <div class="slbl">12 — Product Roadmap</div>
+    <div class="stitle">Built in waves — <span>value at every stage</span></div>
+    <div style="font-size:12px;color:var(--t2);margin-bottom:18px">We won't build everything at once. Each wave is independently valuable and unlocks the next.</div>
+
+    <!-- Wave timeline -->
+    <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px">
+
+      <!-- Wave 1 -->
+      <div style="background:#fff;border:1.5px solid var(--blue-bd);border-radius:12px;overflow:hidden">
+        <div style="background:var(--blue);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:1px">WAVE 1 · M0→M6</span>
+            <span style="background:rgba(255,255,255,.2);color:#fff;padding:2px 10px;border-radius:99px;font-size:9px;font-weight:600">Foundation — ship to first 5 clients</span>
+          </div>
+          <span style="font-size:10px;color:rgba(255,255,255,.7)">Target ARR: €50k</span>
+        </div>
+        <div style="padding:12px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="color:var(--blue);font-size:13px;flex-shrink:0;margin-top:1px">✓</span>
+            <div><div style="font-size:11px;font-weight:600">MCP agent cartography</div><div style="font-size:9px;color:var(--t3)">Real-time map of all agents & servers</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="color:var(--blue);font-size:13px;flex-shrink:0;margin-top:1px">✓</span>
+            <div><div style="font-size:11px;font-weight:600">Undeclared server detection</div><div style="font-size:9px;color:var(--t3)">Alert on any new MCP server in &lt;60s</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="color:var(--blue);font-size:13px;flex-shrink:0;margin-top:1px">✓</span>
+            <div><div style="font-size:11px;font-weight:600">EU AI Act compliance report</div><div style="font-size:9px;color:var(--t3)">Annex IV format, 1-click PDF export</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="color:var(--blue);font-size:13px;flex-shrink:0;margin-top:1px">✓</span>
+            <div><div style="font-size:11px;font-weight:600">Basic anomaly alerts</div><div style="font-size:9px;color:var(--t3)">Volume, timing, destination patterns</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave 2 -->
+      <div style="background:#fff;border:1.5px solid var(--org-bd);border-radius:12px;overflow:hidden">
+        <div style="background:var(--orange);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:1px">WAVE 2 · M6→M12</span>
+            <span style="background:rgba(255,255,255,.2);color:#fff;padding:2px 10px;border-radius:99px;font-size:9px;font-weight:600">Intelligence — the features competitors can't copy</span>
+          </div>
+          <span style="font-size:10px;color:rgba(255,255,255,.7)">Target ARR: €300k</span>
+        </div>
+        <div style="padding:12px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">💥</span>
+            <div><div style="font-size:11px;font-weight:600">Blast Radius engine</div><div style="font-size:9px;color:var(--t3)">Pre-incident SI exposure simulation</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">🧭</span>
+            <div><div style="font-size:11px;font-weight:600">Authorization Drift detection</div><div style="font-size:9px;color:var(--t3)">Behavioral signature + intent deviation</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">🐀</span>
+            <div><div style="font-size:11px;font-weight:600">Remy audit v0</div><div style="font-size:9px;color:var(--t3)">Quality score + public GitHub badge</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">🔗</span>
+            <div><div style="font-size:11px;font-weight:600">SIEM integrations</div><div style="font-size:9px;color:var(--t3)">Splunk, Microsoft Sentinel, webhooks</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave 3 -->
+      <div style="background:#fff;border:1.5px solid var(--grn-bd);border-radius:12px;overflow:hidden">
+        <div style="background:var(--green);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:1px">WAVE 3 · M12→M18</span>
+            <span style="background:rgba(255,255,255,.2);color:#fff;padding:2px 10px;border-radius:99px;font-size:9px;font-weight:600">Scale — Enterprise moat</span>
+          </div>
+          <span style="font-size:10px;color:rgba(255,255,255,.7)">Target ARR: €600k</span>
+        </div>
+        <div style="padding:12px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">🔐</span>
+            <div><div style="font-size:11px;font-weight:600">Minimal Permission Advisor</div><div style="font-size:9px;color:var(--t3)">Least privilege auto-recommendations</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">⚙️</span>
+            <div><div style="font-size:11px;font-weight:600">Remy CI/CD plugin</div><div style="font-size:9px;color:var(--t3)">GitHub Actions / GitLab — block on score &lt;80</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">🏛️</span>
+            <div><div style="font-size:11px;font-weight:600">On-premise deployment</div><div style="font-size:9px;color:var(--t3)">Helm chart · air-gapped · banks & defence</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:13px;flex-shrink:0;margin-top:1px">📋</span>
+            <div><div style="font-size:11px;font-weight:600">Regulatory dossier builder</div><div style="font-size:9px;color:var(--t3)">Auto-generated EU AI Act Annex IV docs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design principle -->
+    <div style="background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:10px;padding:14px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Why this order</div>
+        <div style="font-size:11px;color:var(--blue-dk);line-height:1.6">Wave 1 gets us in the door — every DSI needs compliance today. Wave 2 is why we win against Dynatrace — Blast Radius is ours alone. Wave 3 makes us impossible to rip out.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
+        <div style="font-size:9px;font-weight:700;color:var(--blue-dk);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">What stays out of scope</div>
+        <div style="font-size:10px;color:var(--blue-dk);display:flex;gap:6px;align-items:center"><span style="text-decoration:line-through;opacity:.5">Full APM / infra monitoring</span><span style="font-size:9px;opacity:.6">→ that's Datadog's job</span></div>
+        <div style="font-size:10px;color:var(--blue-dk);display:flex;gap:6px;align-items:center"><span style="text-decoration:line-through;opacity:.5">Agent building tools</span><span style="font-size:9px;opacity:.6">→ not our layer</span></div>
+        <div style="font-size:10px;color:var(--blue-dk);display:flex;gap:6px;align-items:center"><span style="text-decoration:line-through;opacity:.5">Non-MCP agent frameworks</span><span style="font-size:9px;opacity:.6">→ MCP-first, always</span></div>
+      </div>
+    </div>
+  </div>
+
   </div><!-- /swrap -->
   <div class="dots" id="dr"></div>
 </div>
@@ -717,7 +927,7 @@ function chkpw(){
 document.getElementById('pwi').addEventListener('keydown',e=>{if(e.key==='Enter')chkpw();});
 
 // ── SLIDES ──
-const N=11; let cur=0;
+const N=12; let cur=0;
 
 const alloc=[
   {n:'CTO co-founder (18 months)',p:35,c:'#2563EB'},
@@ -786,4 +996,36 @@ function tgFS(){
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.getElementById('fsb').textContent='⛶';});
 </script>
 </body>
-</html>
+</html><!-- S9: ARCHITECTURE -->
+  <div class="slide" id="s9">
+    <div class="slbl">09 — Architecture</div>
+    <div class="stitle">An architecture designed to <span>never see your data</span></div>
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="alayer"><div class="albar" style="background:var(--blue)"></div><div class="anum" style="background:var(--blue)">1</div><div><div class="altl">Collection — closest to the flow</div><div class="albd">Lightweight proxy or SDK wrapper intercepts each MCP call. Extracts metadata only: timestamp, agent ID, tool called, duration, return code. <strong>No payload content ever leaves the client environment.</strong></div><div class="tagrow"><span class="tag">SDK Python/TS</span><span class="tag">Kubernetes sidecar</span><span class="tag">Reverse proxy</span></div></div></div>
+
+        <div class="alayer"><div class="albar" style="background:var(--orange)"></div><div class="anum" style="background:var(--orange)">2</div><div><div class="altl">Pipeline — real-time processing</div><div class="albd">Anonymization and enrichment before storage. Behavioral baseline learning for Authorization Drift. Rules + ML anomaly detection on MCP-specific patterns.</div><div class="tagrow"><span class="tag">OpenTelemetry</span><span class="tag">Kafka / streaming</span><span class="tag">Behavioral ML</span><span class="tag">Rules engine</span></div></div></div>
+
+        <div class="alayer" style="border:1.5px solid var(--red-bd)"><div class="albar" style="background:var(--red)"></div><div class="anum" style="background:var(--red)">★</div><div><div class="altl" style="color:var(--red)">MCP Knowledge Graph — the moat</div><div class="albd">Graph of MCP tool capabilities, permissions, and propagation paths. Powers Blast Radius simulation. <strong>18+ months to build from scratch — structurally impossible to copy.</strong></div><div class="tagrow"><span class="tag" style="border-color:var(--red-bd);color:var(--red)">Knowledge graph</span><span class="tag" style="border-color:var(--red-bd);color:var(--red)">Capability mapping</span><span class="tag" style="border-color:var(--red-bd);color:var(--red)">SI propagation model</span></div></div></div>
+
+        <div class="alayer"><div class="albar" style="background:var(--purple)"></div><div class="anum" style="background:var(--purple)">3</div><div><div class="altl">Storage — metadata only</div><div class="albd">Time-series for real-time metrics. Columnar storage for audit queries. Behavioral baselines per agent. Configurable retention per client.</div><div class="tagrow"><span class="tag">ClickHouse</span><span class="tag">TimescaleDB</span><span class="tag">Encryption at-rest</span></div></div></div>
+
+        <div class="alayer"><div class="albar" style="background:var(--green)"></div><div class="anum" style="background:var(--green)">4</div><div><div class="altl">Exposure — dashboard + action layer</div><div class="albd">REST API for SIEMs. Webhooks for alerts. EU AI Act Annex IV PDF export. <strong>Active Response API</strong> for agent quarantine and permission revocation.</div><div class="tagrow"><span class="tag">REST API</span><span class="tag">Webhooks</span><span class="tag">Active Response</span><span class="tag">Audit export</span></div></div></div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;margin-bottom:10px">Two deployment modes</div>
+        <div class="dcloud"><div class="dctitle">Cloud managed <span style="font-size:9px">80% of clients</span></div><div style="font-size:10px;color:var(--blue-dk);line-height:1.5;margin-bottom:3px">AWS eu-west-3 (Paris) · data never leaves the EU<br>SOC2 Type II in progress · 1-hour installation</div><div style="font-size:9px;color:var(--blue);font-style:italic">Enterprise, retail, tech — standard case</div></div>
+        <div class="dprem"><div style="font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:4px">On-premise <span style="font-size:9px;color:var(--t3)">Regulated enterprises</span></div><div style="font-size:10px;color:var(--t2);line-height:1.5;margin-bottom:3px">Helm chart Kubernetes · zero external data<br>Air-gapped possible · for banks, insurers, public sector</div><div style="font-size:9px;color:var(--t3);font-style:italic">Finance, healthcare, defence — Enterprise plan</div></div>
+        <div class="compd">
+          <div class="cdttl">Compliance by design — not by accident</div>
+          <div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>Data minimization</strong>Metadata only — payload content never stored or transited</div></div>
+          <div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>EU AI Act Annex IV</strong>Audit dossier generated natively — not a dashboard export</div></div>
+          <div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>Data residency</strong>AWS Paris · no EU data transfer · contractual SLA</div></div>
+          <div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>Active Response audit trail</strong>Every quarantine / revoke action is logged, timestamped, and exportable</div></div>
+          <div class="cdi"><span class="chk">✓</span><div class="cdt"><strong>SOC2 Type II · HDS</strong>In progress — Year 1 priority</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
